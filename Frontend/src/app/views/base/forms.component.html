@@ -1,0 +1,92 @@
+<div class="animated fadeIn">
+  <!--/.row//////////////////////////////////-->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-edit"></i>Agregar Grado
+        </div>
+        <div class="card-body">
+          <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-form-label" for="grado">Grado</label>
+            <div class="controls">
+              <div class="input-prepend input-group">
+                <div class="input-group-prepend">
+                </div>
+                <input id="grado" name='grado' [(ngModel)]='grado' class="form-control" size="16" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-form-label" for="jornada">Jornada</label>
+            <div class="controls">
+              <div class="input-group">
+                <select class="form-control" id="jornada" name='idjornada' [(ngModel)]='idjornada'>
+                  <option value="0">Seleccione una Jornada</option>
+                  <option *ngFor="let j of jornadas" value= {{j.idjornada}}>
+                    {{j.jornada}} | {{j.descripcion}}
+                  </option>
+                </select>
+                <div class="input-group-append">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-form-label" for="seccion">Seccion</label>
+            <div class="controls">
+              <div class="input-group">
+                <select class="form-control" id="seccion" name='idseccion' [(ngModel)]='idseccion'>
+                  <option value="0">Seleccione una Seccion</option>
+                  <option *ngFor="let s of secciones" value= {{s.idseccion}}>
+                    {{s.seccion}} | {{s.descripcion}}
+                  </option>
+                </select>
+                <div class="input-group-append">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary"
+            (click)="guardar()"
+            >Guardar</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div> <!--/.col-->
+  </div><!--/.row-->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Lista de Grados
+        </div>
+        <div class="card-body">
+          <div class="row" *ngFor="let grado of grados">
+            <div class="col-md-3">
+              <p>{{grado.grado}}</p>
+            </div>
+            <div class="col-md-3">
+                <p>{{grado.seccion}}</p>
+            </div>
+            <div class="col-md-3">
+                <p>{{grado.jornada}}</p>
+            </div>
+            <div class="col-md-3">
+                <p>
+                    <button class="btn btn-primary" (click)="seleccionarGrado(grado)">Editar</button>
+                    <button class="btn btn-primary" (click)="eliminarGrado(grado)">Eliminar</button>
+                </p>
+                
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+</div>

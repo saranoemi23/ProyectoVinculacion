@@ -1,0 +1,71 @@
+<div class="animated fadeIn">
+  <!--/.row//////////////////////////////////-->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-edit"></i>Agregar Asignatura
+        </div>
+        <div class="card-body">
+          <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-form-label" for="asignatura">Asignatura</label>
+            <div class="controls">
+              <div class="input-prepend input-group">
+                <div class="input-group-prepend">
+                </div>
+                <input id="asignatura" name="asignatura" class="form-control" size="16" type="text"
+                  [(ngModel)]="asignatura" autocomplete="off">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-form-label" for="descripcion">Descripcion</label>
+            <div class="controls">
+              <div class="input-group">
+                <input id="descripcion" name="descripcion" class="form-control" size="16" type="text"
+                  [(ngModel)]="descripcion" autocomplete="off">
+                <div class="input-group-append">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary"
+            (click)="guardar()"
+            >Guardar</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div> <!--/.col-->
+  </div><!--/.row-->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Lista de Asignaturas
+        </div>
+        <div class="card-body">
+            <div class="row" *ngFor="let asignatura of asignaturas">
+              <div class="col-md-4">
+                <p>{{asignatura.asignatura}}</p>
+              </div>
+              <div class="col-md-4">
+                <p>{{asignatura.descripcion}}</p>
+              </div>
+              <div class="col-md-4">
+                <p>
+                    <button class="btn btn-primary" (click)="seleccionarAsignatura(asignatura)">Editar</button>
+                    <button class="btn btn-primary" (click)="eliminarAsignatura(asignatura)">Eliminar</button>
+                </p>
+                
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+</div>

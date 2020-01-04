@@ -1,0 +1,781 @@
+<div class="animated fadeIn">
+    <div class="card">
+      <div class="card-header">
+        <i class="fa fa-edit">Matricular Alumno</i>
+      </div>
+      <div class="card-body">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <br><h2>Informacion Personal</h2><br>
+            <div class="row">
+              <div class="col-4">
+                  <label class="col-form-label" for="prependedInput">Fecha</label>
+                  <div class="controls">
+                    <div class="input-prepend input-group">
+                      <div class="input-group-prepend">
+                      </div>
+                      <input id="fecha_matricula" name = "fecha_matricula" class="form-control" size="16" type="date"
+                      [(ngModel)]="fecha_matricula" autocomplete="off">
+                    </div>
+                  </div>
+              </div>
+              <div class="col">
+                  <label class="col-form-label" for="prependedInput">Nombre</label>
+                  <div class="controls">
+                    <div class="input-prepend input-group">
+                      <div class="input-group-prepend">
+                      </div>
+                      <input id="nombre_alumno" name="nombre_alumno" class="form-control" size="16" type="text"
+                      [(ngModel)]="nombre_alumno" autocomplete="off">
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label class="col-form-label" for="prependedInput">Fecha de Nacimiento</label>
+                    <div class="controls">
+                      <div class="input-prepend input-group">
+                        <div class="input-group-prepend">
+                        </div>
+                        <input id="fecha_nacimiento" name="fecha_nacimiento" class="form-control" size="16" type="date"
+                        [(ngModel)]="fecha_nacimiento" autocomplete="off">
+                      </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label class="col-form-label" for="prependedInput">Lugar de Nacimiento</label>
+                    <div class="controls">
+                      <div class="input-prepend input-group">
+                        <div class="input-group-prepend">
+                        </div>
+                        <input id="lugar_nacimiento" name="lugar_nacimiento" class="form-control" size="16" type="text"
+                        [(ngModel)]="lugar_nacimiento" autocomplete="off">
+                      </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label class="col-form-label" for="prependedInput">Edad</label>
+                    <div class="controls">
+                      <div class="input-prepend input-group">
+                        <div class="input-group-prepend">
+                        </div>
+                        <input id="edad" name="edad" class="form-control" size="16" type="text"
+                        [(ngModel)]="edad" autocomplete="off">
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-4">
+                      <label class="col-form-label" for="prependedInput">Numero Identidad</label>
+                      <div class="controls">
+                        <div class="input-prepend input-group">
+                          <div class="input-group-prepend">
+                          </div>
+                          <input id="identidad" name="identidad" class="form-control" size="16" type="text"
+                          [(ngModel)]="identidad" autocomplete="off">
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-4">
+                      <label class="col-form-label" for="prependedInput">Tipo de Sangre</label>
+                      <div class="controls">
+                        <div class="input-prepend input-group">
+                          <div class="input-group-prepend">
+                          </div>
+                          <select name="tipo_sangre"  class="form-control" placeholder="Tipo Sangre" [(ngModel)]="tipo_sangre" >
+                              <option>
+                                  Seleccione
+                              </option>  
+                            <option>
+                                  O +
+                              </option>
+                              <option>
+                                  O -
+                              </option>
+                              <option>
+                                  A -
+                              </option>
+                              <option>
+                                  A +
+                              </option>
+                              <option>
+                                  B -
+                              </option>
+                              <option>
+                                  B -
+                              </option>
+                              <option>
+                                  AB -
+                              </option>
+                              <option>
+                                  AB -
+                              </option>
+                          </select>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-4">
+                      <label class="col-form-label" for="prependedInput">Alergias</label>
+                      <div class="controls">
+                        <div class="input-prepend input-group">
+                          <div class="input-group-prepend">
+                          </div>
+                          <input id="alergias" name="alergias" class="form-control" size="16" type="text"
+                          [(ngModel)]="alergias" autocomplete="off">
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label class="col-form-label" for="prependedInput">Enfermedades</label>
+                        <div class="controls">
+                          <div class="input-prepend input-group">
+                            <div class="input-group-prepend">
+                            </div>
+                            <input id="enfermedades" name="enfermedades" class="form-control" size="16" type="text"
+                            [(ngModel)]="enfermedades" autocomplete="off">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <label class="col-form-label" for="prependedInput">Vacunas</label>
+                        <div class="controls">
+                          <div class="input-prepend input-group">
+                            <div class="input-group-prepend">
+                            </div>
+                            <input id="vacunas" name="vacunas" class="form-control" size="16" type="text"
+                            [(ngModel)]="vacunas" autocomplete="off">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <label class="col-form-label" for="prependedInput">Otros</label>
+                        <div class="controls">
+                          <div class="input-prepend input-group">
+                            <div class="input-group-prepend">
+                            </div>
+                            <input id="otros" name="otros" class="form-control" size="16" type="text"
+                            [(ngModel)]="otros" autocomplete="off">
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-4">
+                          <label class="col-form-label" for="prependedInput">Operaciones</label>
+                          <div class="controls">
+                            <div class="input-prepend input-group">
+                              <div class="input-group-prepend">
+                              </div>
+                              <input id="operaciones" name="operaciones" class="form-control" size="16" type="text"
+                              [(ngModel)]="operaciones" autocomplete="off">
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-4">
+                          <label class="col-form-label" for="prependedInput">Fracturas</label>
+                          <div class="controls">
+                            <div class="input-prepend input-group">
+                              <div class="input-group-prepend">
+                              </div>
+                              <input id="fracturas" name="fracturas" class="form-control" size="16" type="text"
+                              [(ngModel)]="fracturas" autocomplete="off">
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-4">
+                          <label class="col-form-label" for="prependedInput">Dificultad de Conducta</label>
+                          <div class="controls">
+                            <div class="input-prepend input-group">
+                              <div class="input-group-prepend">
+                              </div>
+                              <input id="dif_conducta" name="dif_conducta" class="form-control" size="16" type="text"
+                              [(ngModel)]="dif_conducta" autocomplete="off">
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+
+                            <!-- <label class="col-form-label" for="prependedInput">Grado</label>
+                            <div class="controls">
+                              <div class="input-prepend input-group">
+                                <div class="input-group-prepend">
+                                </div>
+                                <input id="grado" name="grado" class="form-control" size="16" type="text"
+                                [(ngModel)]="grado" autocomplete="off">
+                              </div>
+                            </div> -->
+
+                            <div class="form-group">
+                              <label class="col-form-label" for="grado">Grado</label>
+                              <div class="controls">
+                                <div class="input-group">
+                                  <select class="form-control" id="grado" name='idgrado' [(ngModel)]='grado'>
+                                    <option value="0">Seleccione el grado</option>
+                                    <option *ngFor="let g of grados" value= {{g.idgrado}}>
+                                      {{g.grado}} 
+                                    </option>
+                                  </select>
+                                  <div class="input-group-append">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-4">
+                            <label class="col-form-label" for="prependedInput">Tipo Ingreso</label>
+                            <div class="controls">
+                              <div class="input-prepend input-group">
+                                <div class="input-group-prepend">
+                                </div>
+                                <select name="tipo_ingreso" class="form-control" placeholder="Ingreso"[(ngModel)]="tipo_ingreso"  >
+                                  <option>
+                                      Seleccione
+                                  </option>  
+                                  <option>
+                                        Primer Ingreso
+                                    </option>
+                                    <option>
+                                        Reingreso
+                                    </option>
+                                </select>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label class="col-form-label" for="prependedInput">Repitente</label>
+                            <div class="controls">
+                              <div class="input-prepend input-group">
+                                <div class="input-group-prepend">
+                                </div>
+                                <select name="repitente" class="form-control" placeholder="Repitente" [(ngModel)]="repitente" >
+                                  <option>
+                                      Seleccione
+                                  </option>  
+                                  <option>
+                                        Si
+                                    </option>
+                                    <option>
+                                        No
+                                    </option>
+                                </select>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+  
+  
+          </div>
+          <div class="form-group">
+            <label class="col-form-label" for="appendedInput">Escuela Anterior</label>
+            <div class="controls">
+              <div class="input-group">
+                <input id="escuela_ant" name="escuela_ant" class="form-control" size="16" type="text"
+                [(ngModel)]="escuela_ant" autocomplete="off">
+                <div class="input-group-append">
+                </div>
+              </div>
+            </div>
+          </div>
+          <br><br>
+          <h2>Informacion Padre</h2><br>
+          <div class="form-group">
+            <label class="col-form-label" for="appendedInput">Nombre del Padre</label>
+            <div class="controls">
+              <div class="input-group">
+                <input id="nombre_padre" name="nombre_padre" class="form-control" size="16" type="text"
+                [(ngModel)]="nombre_padre" autocomplete="off">
+                <div class="input-group-append">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-4">
+                  <label class="col-form-label" for="prependedInput">Numero Identidad</label>
+                  <div class="controls">
+                    <div class="input-prepend input-group">
+                      <div class="input-group-prepend">
+                      </div>
+                      <input id="padre_id" name="padre_id" class="form-control" size="16" type="text"
+                      [(ngModel)]="padre_id" autocomplete="off">
+                    </div>
+                  </div>
+              </div>
+              <div class="col-4">
+                  <label class="col-form-label" for="prependedInput">Edad</label>
+                  <div class="controls">
+                    <div class="input-prepend input-group">
+                      <div class="input-group-prepend">
+                      </div>
+                      <input id="padre_edad" name ="padre_edad" class="form-control" size="16" type="text"
+                      [(ngModel)]="padre_edad" autocomplete="off">
+                    </div>
+                  </div>
+              </div>
+              <div class="col-4">
+                  <label class="col-form-label" for="prependedInput">Grado Academico</label>
+                  <div class="controls">
+                    <div class="input-prepend input-group">
+                      <div class="input-group-prepend">
+                      </div>
+                      <select name="padre_academ" class="form-control" placeholder="Grado Academico" [(ngModel)]="padre_academ" >
+                          <option>
+                              Seleccione
+                          </option>  
+                          <option>
+                                Primaria Incompleta
+                            </option>
+                            <option>
+                                Primaria Completa
+                            </option>
+                            <option>
+                                Secundaria Incompleta
+                            </option>
+                            <option>
+                                Secundaria Completa
+                            </option>
+                            <option>
+                                Pregrado Incompleto
+                            </option>
+                            <option>
+                                Pregrado Completo
+                            </option>
+                            <option>
+                                Maestria Incompleta
+                            </option>
+                            <option>
+                                Maestria Completa
+                            </option>
+                            <option>
+                                Doctorado Incompleta
+                            </option>
+                            <option>
+                                Doctorado Completa
+                            </option>
+                        </select>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label class="col-form-label" for="prependedInput">Lugar de Trabajo</label>
+                    <div class="controls">
+                      <div class="input-prepend input-group">
+                        <div class="input-group-prepend">
+                        </div>
+                        <input id="padre_trabajo" name="padre_trabajo" class="form-control" size="16" type="text"
+                        [(ngModel)]="padre_trabajo" autocomplete="off">
+                      </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label class="col-form-label" for="prependedInput">Telefono Trabajo</label>
+                    <div class="controls">
+                      <div class="input-prepend input-group">
+                        <div class="input-group-prepend">
+                        </div>
+                        <input id="padre_trabajo_tel" name="padre_trabajo_tel" class="form-control" size="16" type="text"
+                        [(ngModel)]="padre_trabajo_tel" autocomplete="off">
+                      </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label class="col-form-label" for="prependedInput">Celular</label>
+                    <div class="controls">
+                      <div class="input-prepend input-group">
+                        <div class="input-group-prepend">
+                        </div>
+                        <input id="padre_tel" name = "padre_tel" class="form-control" size="16" type="text"
+                        [(ngModel)]="padre_tel" autocomplete="off">
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <br><br>
+              <h2>Informacion Madre</h2><br>
+              <div class="form-group">
+                  <label class="col-form-label" for="appendedInput">Nombre de la Madre</label>
+                  <div class="controls">
+                    <div class="input-group">
+                      <input id="nombre_madre" name="nombre_madre" class="form-control" size="16" type="text"
+                      [(ngModel)]="nombre_madre" autocomplete="off">
+                      <div class="input-group-append">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label class="col-form-label" for="prependedInput">Numero Identidad</label>
+                        <div class="controls">
+                          <div class="input-prepend input-group">
+                            <div class="input-group-prepend">
+                            </div>
+                            <input id="madre_id" name="madre_id" class="form-control" size="16" type="text"
+                            [(ngModel)]="madre_id" autocomplete="off">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <label class="col-form-label" for="prependedInput">Edad</label>
+                        <div class="controls">
+                          <div class="input-prepend input-group">
+                            <div class="input-group-prepend">
+                            </div>
+                            <input id="madre_edad" name ="madre_edad" class="form-control" size="16" type="text"
+                            [(ngModel)]="madre_edad" autocomplete="off">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <label class="col-form-label" for="prependedInput">Grado Academico</label>
+                        <div class="controls">
+                          <div class="input-prepend input-group">
+                            <div class="input-group-prepend">
+                            </div>
+                            <select name="madre_academ" class="form-control" placeholder="Grado Academico" [(ngModel)]="madre_academ">
+                                <option>
+                                    Seleccione
+                                </option>  
+                                <option>
+                                      Primaria Incompleta
+                                  </option>
+                                  <option>
+                                      Primaria Completa
+                                  </option>
+                                  <option>
+                                      Secundaria Incompleta
+                                  </option>
+                                  <option>
+                                      Secundaria Completa
+                                  </option>
+                                  <option>
+                                      Pregrado Incompleto
+                                  </option>
+                                  <option>
+                                      Pregrado Completo
+                                  </option>
+                                  <option>
+                                      Maestria Incompleta
+                                  </option>
+                                  <option>
+                                      Maestria Completa
+                                  </option>
+                                  <option>
+                                      Doctorado Incompleta
+                                  </option>
+                                  <option>
+                                      Doctorado Completa
+                                  </option>
+                              </select>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-4">
+                          <label class="col-form-label" for="prependedInput">Lugar de Trabajo</label>
+                          <div class="controls">
+                            <div class="input-prepend input-group">
+                              <div class="input-group-prepend">
+                              </div>
+                              <input id="madre_trabajo" name="madre_trabajo" class="form-control" size="16" type="text"
+                              [(ngModel)]="madre_trabajo" autocomplete="off">
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-4">
+                          <label class="col-form-label" for="prependedInput">Telefono Trabajo</label>
+                          <div class="controls">
+                            <div class="input-prepend input-group">
+                              <div class="input-group-prepend">
+                              </div>
+                              <input id="madre_trabajo_tel" name="madre_trabajo_tel" class="form-control" size="16" type="text"
+                              [(ngModel)]="madre_trabajo_tel" autocomplete="off">
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-4">
+                          <label class="col-form-label" for="prependedInput">Celular</label>
+                          <div class="controls">
+                            <div class="input-prepend input-group">
+                              <div class="input-group-prepend">
+                              </div>
+                              <input id="madre_tel" name="madre_tel" class="form-control" size="16" type="text"
+                              [(ngModel)]="made_tel" autocomplete="off">
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <br><br>
+          <h2>Responsable del Niño</h2> <br>        
+          <div class="form-group">
+            <label class="col-form-label" for="appendedInput">Responsable de Llevar y Traer el Niño</label>
+            <div class="controls">
+              <div class="input-group">
+                <input id="responsable" name="responsable" class="form-control" size="16" type="text"
+                [(ngModel)]="responsable" autocomplete="off">
+                <div class="input-group-append">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-6">
+                  <label class="col-form-label" for="prependedInput">Direccion Actual</label>
+                  <div class="controls">
+                    <div class="input-prepend input-group">
+                      <div class="input-group-prepend">
+                      </div>
+                      <input id="direccion_resp" name="direccion_resp" class="form-control" size="16" type="text"
+                      [(ngModel)]="direccion_resp" autocomplete="off">
+                    </div>
+                  </div>
+              </div>
+              <div class="col-6">
+                  <label class="col-form-label" for="prependedInput">Telefono</label>
+                  <div class="controls">
+                    <div class="input-prepend input-group">
+                      <div class="input-group-prepend">
+                      </div>
+                      <input id="tel_resp" name="tel_resp" class="form-control" size="16" type="text"
+                      [(ngModel)]="tel_resp" autocomplete="off">
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <br><br>
+          <h2>Contactos de Emergencia</h2><br>
+          <div class="row">
+              <div class="col-6">
+                  <label class="col-form-label" for="prependedInput">Familiar</label>
+                  <div class="controls">
+                    <div class="input-prepend input-group">
+                      <div class="input-group-prepend">
+                      </div>
+                      <input id="familiar" name="familiar" class="form-control" size="16" type="text"
+                      [(ngModel)]="familiar" autocomplete="off">
+                    </div>
+                  </div>
+              </div>
+              <div class="col-6">
+                  <label class="col-form-label" for="prependedInput">Telefono</label>
+                  <div class="controls">
+                    <div class="input-prepend input-group">
+                      <div class="input-group-prepend">
+                      </div>
+                      <input id="tel_familiar" name="tel_familiar" class="form-control" size="16" type="text"
+                      [(ngModel)]="tel_familiar" autocomplete="off">
+                    </div>
+                  </div>
+              </div>
+          </div>
+  
+          <div class="row">
+              <div class="col-6">
+                  <label class="col-form-label" for="prependedInput">Amigo</label>
+                  <div class="controls">
+                    <div class="input-prepend input-group">
+                      <div class="input-group-prepend">
+                      </div>
+                      <input id="amigo" name="amigo" class="form-control" size="16" type="text"
+                      [(ngModel)]="amigo" autocomplete="off">
+                    </div>
+                  </div>
+              </div>
+              <div class="col-6">
+                  <label class="col-form-label" for="prependedInput">Telefono</label>
+                  <div class="controls">
+                    <div class="input-prepend input-group">
+                      <div class="input-group-prepend">
+                      </div>
+                      <input id="tel_amigo" name="tel_amigo" class="form-control" size="16" type="text"
+                      [(ngModel)]="tel_amigo" autocomplete="off">
+                    </div>
+                  </div>
+              </div>
+          </div>
+  
+          <div class="row">
+              <div class="col-6">
+                  <label class="col-form-label" for="prependedInput">Vecino</label>
+                  <div class="controls">
+                    <div class="input-prepend input-group">
+                      <div class="input-group-prepend">
+                      </div>
+                      <input id="vecino" name="vecino" class="form-control" size="16" type="text"
+                      [(ngModel)]="vecino" autocomplete="off">
+                    </div>
+                  </div>
+              </div>
+              <div class="col-6">
+                  <label class="col-form-label" for="prependedInput">Telefono</label>
+                  <div class="controls">
+                    <div class="input-prepend input-group">
+                      <div class="input-group-prepend">
+                      </div>
+                      <input id="tel_vecino" name="tel_vecino" class="form-control" size="16" type="text"
+                      [(ngModel)]="tel_vecino" autocomplete="off">
+                    </div>
+                  </div>
+              </div>
+          </div>
+  
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" (click)="guardar()">Agregar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+<!--<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-lg-12">
+       <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Lista de Matriculas
+        </div>
+        <div class="card-body">
+            <div class="row" *ngFor="let matricula of matriculas">
+                <div class="col-md-4">
+                    <p>{{ matricula.fecha_matricula}}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.nombre_alumno }}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.fecha_nacimiento }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>{{ matricula.lugar_nacimiento}}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.edad }}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.identidad }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>{{ matricula.tipo_sangre}}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.alergias }}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.enfermedades }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>{{ matricula.vacunas}}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.otros }}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.operaciones }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>{{ matricula.fracturas}}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.dif_conducta }}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.grado }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>{{ matricula.tipo_ingreso}}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.escuela_ant}}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.nombre_padre }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>{{ matricula.padre_id}}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.padre_edad }}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.padre_academ }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>{{ matricula.padre_trabajo}}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.padre_trabajo_tel }}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.padre_tel }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>{{ matricula.nombre_madre}}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.madre_id }}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.madre_edad }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>{{ matricula.madre_academ}}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.madre_trabajo }}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.madre_trabajo_tel }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>{{ matricula.madre_tel}}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.responsable }}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.direccion_resp }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>{{ matricula.tel_resp}}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.familiar }}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.tel_familiar }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>{{ matricula.amigo}}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.tel_amigo }}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>{{ matricula.vecino }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>{{ matricula.tel_vecino}}</p>
+                </div>
+                  <p>
+                      <button class="btn btn-primary" (click)="seleccionarMatricula(matricula)">Editar</button>
+                      <button class="btn btn-primary" (click)="eliminarMatricula(matricula)">Eliminar</button>
+                  </p>        
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>  
+
+  </div>-->
+ 
