@@ -1,0 +1,31 @@
+
+/* el asterisco aplia las propiedades a todos tags del html
+important hace que las propiedades no se pudan modificar
+* { color: red !important } */
+
+ol.breadcrumb{
+    display: none !important;
+}
+input, select, textarea{
+    border: none !important;
+    outline: none !important;
+    /*Quita las decoraciones del inputs, ejemplo fechita de combobox*/
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none; 
+}
+
+button{
+    display: none !important;
+}
+
+.card-header{
+    display: none !important;
+}
+
+.card{
+    border: none !important;
+    outline: none !important;
+    /*siempre habra un breake antes que empiece un card
+    page-break-before: always; */
+}
