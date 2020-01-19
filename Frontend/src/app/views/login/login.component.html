@@ -6,24 +6,30 @@
           <div class="card-group">
             <div class="card p-4">
               <div class="card-body">
-                <form>
-                  <h1>Login</h1>
-                  <p class="text-muted">Ingrece a la Plataforma</p>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                  <div style="display: flex; justify-content: center;">
+                    <img class="onlyMobile" style="width: 65px; height: auto;" src = "../../../assets/img/avatars/login.png">
+                  </div>
+                  <h1 class="text-center">Inicio de Sesión</h1>
+                  <p class="text-muted text-center">Por favor escriba sus datos de acceso</p>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-user"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Usuario" autocomplete="username" required>
+                    <input type="text" class="form-control" placeholder="Usuario" autocomplete="username" formControlName="username" required>
                   </div>
                   <div class="input-group mb-4">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-lock"></i></span>
                     </div>
-                    <input type="password" class="form-control" placeholder="Password" autocomplete="current-password" required>
+                    <input type="password" class="form-control" placeholder="Contraseña" autocomplete="current-password" formControlName="password" required>
+                  </div>
+                  <div class="input-group">
+                    <p><a routerLink="/forgot">Olvidé mi contraseña</a></p>
                   </div>
                   <div class="row">
-                    <div class="col-6">
-                      <button type="button" id = "btn-login" class="btn btn-primary px-4">Login</button>
+                    <div class="col-6 mx-auto">
+                      <button type="submit" id ="btn-login" class="btn btn-primary px-4 btn-block">Entrar</button>
                     </div>
                   </div>
                 </form>

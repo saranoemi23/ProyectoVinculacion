@@ -1,8 +1,8 @@
 <app-header
   [navbarBrandRouterLink]="['/dashboard']"
   [fixed]="true"
-  [navbarBrandFull]="{src: 'assets/img/avatars/logo-mini', width: 89, height: 25, alt: 'C.E.J'}"
-  [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'C.E.J'}"
+  [navbarBrandFull]="{src: 'assets/img/avatars/logo-mini.jpg', width: 40, height: auto, alt: 'C.E.J'}"
+  [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: auto, alt: 'C.E.J'}"
   [sidebarToggler]="'lg'"
   [asideMenuToggler]="'lg'">
   <ul class="nav navbar-nav d-md-down-none">
@@ -10,7 +10,7 @@
   <ul class="nav navbar-nav ml-auto">
     <li class="nav-item dropdown" dropdown placement="bottom right">
       <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
-        <img src="assets/img/avatars/logo-mini.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"/>
+        <img src="assets/img/avatars/user-avatar.png" class="img-avatar" alt="Usuario"/>
       </a>
       <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
         <div class="divider"></div>
@@ -40,5 +40,5 @@
 
 </div>
 <app-footer>
-  <span><a>C.E.B Julieta Salem de Katan</a> &copy; 2019.</span>
+  <span><a>C.E.B Julieta Salem de Katan</a> &copy; {{ anio }}.</span>
 </app-footer>

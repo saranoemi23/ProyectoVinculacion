@@ -7,13 +7,14 @@ import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
+import { ForgotComponent } from './views/forgot/forgot.component';
 import { RegisterComponent } from './views/register/register.component';
 
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/login',
     pathMatch: 'full',
   },
   {
@@ -38,6 +39,13 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'forgot',
+    component: ForgotComponent,
+    data: {
+      title: 'Recuperar Contraseña'
+    }
+  },
+  {
     path: 'register',
     component: RegisterComponent,
     data: {
@@ -48,7 +56,7 @@ export const routes: Routes = [
     path: '',
     component: DefaultLayoutComponent,
     data: {
-      title: 'Home'
+      title: 'Inicio'
     },
     children: [
       {

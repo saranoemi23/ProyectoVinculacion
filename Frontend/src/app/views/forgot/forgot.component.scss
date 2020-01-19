@@ -1,0 +1,19 @@
+#logo{
+    background-color: white !important;
+    border-color: #c8ced3 !important;
+}
+
+#btn-login{
+    background: #ed1a3b;
+    border-color: #ed1a3b;
+}
+
+.onlyMobile {
+    display:none;
+}
+
+@media (max-width: 995px) {
+    .onlyMobile {
+      display: block;
+    }
+}

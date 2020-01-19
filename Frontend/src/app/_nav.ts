@@ -3,10 +3,10 @@ import { INavData } from '@coreui/angular';
 export const navItems: INavData[] = [
   {
     title: true,
-    name: 'Administracion'
+    name: 'Dashboard'
   },
   {
-    name: 'Academica',
+    name: 'Escuela',
     url: '/base',
     icon: 'icon-graduation',
     children: [
@@ -21,12 +21,12 @@ export const navItems: INavData[] = [
         icon: 'icon-control-pause'
       },
       {
-        name: 'Jornada',
+        name: 'Jornadas',
         url: '/base/jornadas',
         icon: 'icon-hourglass  '
       },
       {
-        name: 'Periodo',
+        name: 'Periodos',
         url: '/base/periodos',
         icon: 'icon-calendar '
       },
@@ -43,12 +43,12 @@ export const navItems: INavData[] = [
     icon: 'icon-people',
     children: [
       {
-        name: 'Mantenimiento',
+        name: 'Editar Usuarios',
         url: '/buttons/mantenimientos',
         icon: 'icon-settings'
       },
       {
-        name: 'Roles',
+        name: 'Editar Roles',
         url: '/buttons/roles',
         icon: 'icon-layers'
       }
@@ -59,12 +59,12 @@ export const navItems: INavData[] = [
     name: 'Procesos'
   },
   {
-    name: 'Matricula',
+    name: 'Matricular',
     url: '/charts',
     icon: 'icon-folder-alt'
   },
   {
-    name: 'Lista Matriculas',
+    name: 'Ver Alumnos',
     url: '/dashboard',
     icon: 'icon-notebook'
   }

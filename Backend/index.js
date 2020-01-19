@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const connection = require("./conecction");
+const connection = require("./conection");
 var cors = require('cors');
 
 //Rutas
@@ -16,7 +16,6 @@ const Asignatura_DetallesRoutes = require("./routes/routes.asignatura_detalles")
 const UsuariosRoutes = require("./routes/routes.usuarios");
 const Grado_DetalleRoutes = require("./routes/routes.grado_detalles");
 const MatriculaRoutes = require("./routes/routes.matriculas");
-/////
 
 var app = express();
 
@@ -36,7 +35,6 @@ app.use("/asignatura_detalles", Asignatura_DetallesRoutes);
 app.use("/usuarios", UsuariosRoutes);
 app.use("/grado_detalles", Grado_DetalleRoutes);
 app.use("/matriculas", MatriculaRoutes);
-////
 
 app.listen(3000, () =>{
     console.log('Server on port 3000');

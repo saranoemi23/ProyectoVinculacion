@@ -1,6 +1,6 @@
 const express = require("express");
 const Router = express.Router();
-const connection = require("../conecction");
+const connection = require("../conection");
 
 Router.get('/get', (req, res) => {
     console.log("Seleccionar todos los Asignatura_Detalles")

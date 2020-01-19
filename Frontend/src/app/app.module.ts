@@ -19,8 +19,10 @@ import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
+import { ForgotComponent } from './views/forgot/forgot.component';
 import { RegisterComponent } from './views/register/register.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // para el login
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -57,7 +59,9 @@ import { DashboardModule } from './views/dashboard/dashboard.module';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
@@ -65,6 +69,7 @@ import { DashboardModule } from './views/dashboard/dashboard.module';
     P404Component,
     P500Component,
     LoginComponent,
+    ForgotComponent,
     RegisterComponent
   
   ],

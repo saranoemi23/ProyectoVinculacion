@@ -8,6 +8,7 @@ import { navItems } from '../../_nav';
 export class DefaultLayoutComponent {
   public sidebarMinimized = false;
   public navItems = navItems;
+  anio: number = new Date().getFullYear();
 
   toggleMinimize(e) {
     this.sidebarMinimized = e;
