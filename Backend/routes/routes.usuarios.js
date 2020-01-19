@@ -1,11 +1,13 @@
 const express = require("express");
-const Router = express.Router({mergeParams: true/*, strict: true*/});
+const Router = express.Router({ mergeParams: true });
 const connection = require("../conection");
 
-Router.get('/get', (req, res) => {
+Router.get('/get', async (req, res, next) => {
     console.log("Seleccionar todos los usuarios")
 
     //res.json(req.query);
+
+    console.log(req.query);
 
     const queryString = "SELECT u.nombres AS nombres, u.apellidos AS apellidos, u.identidad AS identidad, u.correo AS correo, u.direccion AS direccion, u.usuario AS usuario, r.rol AS rol FROM usuario AS u INNER JOIN rol AS r ON u.idrol = r.idrol"
     connection.query(queryString,(err, rows, fields) => {
@@ -15,13 +17,13 @@ Router.get('/get', (req, res) => {
             res.end()
             return
         }
-        console.log("usuarios Seleccionados")
+        console.log("varios usuarios Seleccionados")
         res.json(rows)
     })
 });
 
 //usuario x ID
-Router.get('/get/:id', (req, res) => {
+Router.get('/get/:id', async (req, res) => {
     console.log("Seleccionar usuario con id: "+ req.params.id)
 
     const idusuario= req.params.id
@@ -33,14 +35,14 @@ Router.get('/get/:id', (req, res) => {
             res.end()
             return
         }
-        console.log("usuario Seleccionado")
+        console.log("usuario Seleccionado por su id")
         res.json(rows)
     })
 });
 
 
 //usuario x nombre de usuario y clave
-Router.get('/get/:usuario/:clave', (req, res) => {
+Router.get('/get/:usuario', async (req, res) => {
     console.log("Seleccionar usuario con usuario: "+ req.params.usuario)
 
     const usuario= req.params.usuario
@@ -53,12 +55,12 @@ Router.get('/get/:usuario/:clave', (req, res) => {
             res.end()
             return
         }
-        console.log("usuario Seleccionado")
+        console.log("usuario Seleccionado por su contrase­ña")
         res.json({status: 'ok'})
     })
 });
 
-Router.post('/add', (req, res) =>{
+Router.post('/add', async (req, res) =>{
 
     console.log("Tratando de agregar usuario..")
     console.log("Nombres: "+ req.body.nombres)
@@ -94,7 +96,7 @@ Router.post('/add', (req, res) =>{
     } )
 });
 
-Router.put('/edit/:id', (req, res) =>{
+Router.put('/edit/:id', async (req, res) =>{
 
     console.log("Tratando de editar un usuario..")
     console.log("Nombres: "+ req.body.nombres)
@@ -131,7 +133,7 @@ Router.put('/edit/:id', (req, res) =>{
     } )
 });
 
-Router.delete('/delete/:id', (req, res) => {
+Router.delete('/delete/:id', async (req, res) => {
     console.log("Eliminar usuario con id: "+ req.params.id)
 
     const idusuario = req.params.id

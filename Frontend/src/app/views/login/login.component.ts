@@ -40,8 +40,8 @@ loginForm = new FormGroup({
     const instance = axios.create();
 
     axios.get('http://localhost:3000/usuarios/get/?usuario=' + username + '&clave=' + password).then(resp => {
-
-      //console.log(resp.data);
+ 
+      //console.log(resp.data);asdasd
       alert(JSON.stringify(resp.data));
 
       if (resp.status == 500) {
