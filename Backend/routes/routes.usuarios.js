@@ -1,9 +1,11 @@
 const express = require("express");
-const Router = express.Router();
+const Router = express.Router({mergeParams: true/*, strict: true*/});
 const connection = require("../conection");
 
 Router.get('/get', (req, res) => {
     console.log("Seleccionar todos los usuarios")
+
+    //res.json(req.query);
 
     const queryString = "SELECT u.nombres AS nombres, u.apellidos AS apellidos, u.identidad AS identidad, u.correo AS correo, u.direccion AS direccion, u.usuario AS usuario, r.rol AS rol FROM usuario AS u INNER JOIN rol AS r ON u.idrol = r.idrol"
     connection.query(queryString,(err, rows, fields) => {
@@ -36,6 +38,26 @@ Router.get('/get/:id', (req, res) => {
     })
 });
 
+
+//usuario x nombre de usuario y clave
+Router.get('/get/:usuario/:clave', (req, res) => {
+    console.log("Seleccionar usuario con usuario: "+ req.params.usuario)
+
+    const usuario= req.params.usuario
+    const contraseña = req.params.clave
+    const queryString = "SELECT u.nombres AS nombres, u.apellidos AS apellidos, u.identidad AS identidad, u.correo AS correo, u.direccion AS direccion, u.usuario AS usuario, r.rol AS rol FROM usuario AS u INNER JOIN rol AS r ON u.idrol = r.idrol WHERE u.usuario = ? AND u.contraseña = ?"
+    connection.query(queryString, [usuario, contraseña],(err, rows, fields) => {
+        if(err){
+            console.log("No existe usuario " + err)
+            res.sendStatus(500)
+            res.end()
+            return
+        }
+        console.log("usuario Seleccionado")
+        res.json({status: 'ok'})
+    })
+});
+
 Router.post('/add', (req, res) =>{
 
     console.log("Tratando de agregar usuario..")
@@ -58,7 +80,7 @@ Router.post('/add', (req, res) =>{
     const contraseña = req.body.contraseña
     const idrol = req.body.idrol
 
-    const queryString = "INSERT INTO usuario (nombres, apellidos, identidad, correo, direccion, usuario, contraseña, idrol)  VALUES  (?,?,?,?,?,?,?,(SELECT idrol FROM rol WHERE rol = ?)) "
+    const queryString = "INSERT INTO usuario (nombres, apellidos, identidad, correo, direccion, usuario, contraseña, idrol) VALUES (?,?,?,?,?,?,?,(SELECT idrol FROM rol WHERE idrol = ?)) "
     connection.query(queryString, [nombres, apellidos, identidad, correo, direccion, usuario, contraseña, idrol], (err, results, fields) =>{
         if (err){
             console.log("Error el usuario: "+ err)

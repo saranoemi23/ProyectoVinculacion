@@ -6,7 +6,7 @@
           <div class="card-group">
             <div class="card p-4">
               <div class="card-body">
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" validate>
                   <div style="display: flex; justify-content: center;">
                     <img class="onlyMobile" style="width: 65px; height: auto;" src = "../../../assets/img/avatars/login.png">
                   </div>
