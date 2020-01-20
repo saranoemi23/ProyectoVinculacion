@@ -3,10 +3,10 @@ const Router = express.Router({ mergeParams: true });
 const connection = require("../conection");
 
 Router.get('/get', async (req, res, next) => {
+
     console.log("Seleccionar todos los usuarios")
 
     //res.json(req.query);
-
     console.log(req.query);
 
     const queryString = "SELECT u.nombres AS nombres, u.apellidos AS apellidos, u.identidad AS identidad, u.correo AS correo, u.direccion AS direccion, u.usuario AS usuario, r.rol AS rol FROM usuario AS u INNER JOIN rol AS r ON u.idrol = r.idrol"
@@ -42,11 +42,12 @@ Router.get('/get/:id', async (req, res) => {
 
 
 //usuario x nombre de usuario y clave
-Router.get('/get/:usuario', async (req, res) => {
-    console.log("Seleccionar usuario con usuario: "+ req.params.usuario)
+Router.get('/get/:usuario?:clave', async (req, res) => {
+    console.log("Seleccionar por usuario y clave: "+ req.params.usuario)
 
     const usuario= req.params.usuario
     const contraseña = req.params.clave
+    
     const queryString = "SELECT u.nombres AS nombres, u.apellidos AS apellidos, u.identidad AS identidad, u.correo AS correo, u.direccion AS direccion, u.usuario AS usuario, r.rol AS rol FROM usuario AS u INNER JOIN rol AS r ON u.idrol = r.idrol WHERE u.usuario = ? AND u.contraseña = ?"
     connection.query(queryString, [usuario, contraseña],(err, rows, fields) => {
         if(err){
@@ -55,7 +56,7 @@ Router.get('/get/:usuario', async (req, res) => {
             res.end()
             return
         }
-        console.log("usuario Seleccionado por su contrase­ña")
+        console.log("usuario Seleccionado por su usuario y contrase­ña")
         res.json({status: 'ok'})
     })
 });
@@ -91,6 +92,7 @@ Router.post('/add', async (req, res) =>{
         }
 
         console.log("Se agrego usuario con id: ", results.insertId);
+        res.json('ok');
         res.end() 
         
     } )

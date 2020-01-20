@@ -6,7 +6,7 @@
           <div class="card-group">
             <div class="card p-4">
               <div class="card-body">
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" validate>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
                   <div style="display: flex; justify-content: center;">
                     <img class="onlyMobile" style="width: 65px; height: auto;" src = "../../../assets/img/avatars/login.png">
                   </div>
@@ -24,15 +24,14 @@
                     </div>
                     <input type="password" class="form-control" placeholder="Contraseña" autocomplete="current-password" formControlName="password" required>
                   </div>
-                  <div class="input-group">
-                    <p><a routerLink="/forgot">Olvidé mi contraseña</a></p>
-                  </div>
                   <div class="row">
                     <div class="col-6 mx-auto">
-                      <button type="submit" id ="btn-login" class="btn btn-primary px-4 btn-block">Entrar</button>
+                      <button type="submit" id ="btn-login" class="btn btn-primary px-4 btn-block">Entrar &rarr;</button>
                     </div>
                   </div>
                 </form>
+                <a routerLink="/forgot" style="display:block; text-align:center; padding: 10px 0px 2px 0px;">Olvidé mi contraseña</a>
+                <a routerLink="/register" style="display:block; text-align:center; padding: 3px 0px 0px 0px;">Registrar nueva cuenta</a>
               </div>
             </div>
             <div id = "logo" class="card text-white bg-primary py-5 d-md-down-none">

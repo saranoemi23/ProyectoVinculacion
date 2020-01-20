@@ -1,6 +1,5 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const connection = require("./conection");
 var cors = require('cors');
 
 //Rutas
@@ -22,6 +21,11 @@ var app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use(function (err, req, res, next) {
+    console.error(err.stack)
+    res.status(500).json('error');
+})
+
 //Usar rutas
 app.use("/jornadas", JornadasRoutes);
 app.use("/roles", RolesRoutes);
@@ -32,7 +36,7 @@ app.use("/secciones", SeccionesRoutes);
 app.use("/periodos", PeriodosRoutes);
 app.use("/parciales", ParcialesRoutes);
 app.use("/asignatura_detalles", Asignatura_DetallesRoutes);
-app.use("/usuarios", UsuariosRoutes);
+app.use("/usuarios", express.Router({mergeParams: true}), UsuariosRoutes);
 app.use("/grado_detalles", Grado_DetalleRoutes);
 app.use("/matriculas", MatriculaRoutes);
 
