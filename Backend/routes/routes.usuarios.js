@@ -1,13 +1,23 @@
 const express = require("express");
-const Router = express.Router({ mergeParams: true });
+const Router = express.Router();
 const connection = require("../conection");
+
+/*
+Router.param('id', (req, res, next, id)=> {
+    console.log('el id: ' + id);
+    next();
+})
+
+Router.param(['usuario', 'clave'], (req, res, next, value)=> {
+    console.log('param: ' + value);
+    next();
+})*/
 
 Router.get('/get', async (req, res, next) => {
 
     console.log("Seleccionar todos los usuarios")
 
-    //res.json(req.query);
-    console.log(req.query);
+    console.log('/get = ' + JSON.stringify(req.query));
 
     const queryString = "SELECT u.nombres AS nombres, u.apellidos AS apellidos, u.identidad AS identidad, u.correo AS correo, u.direccion AS direccion, u.usuario AS usuario, r.rol AS rol FROM usuario AS u INNER JOIN rol AS r ON u.idrol = r.idrol"
     connection.query(queryString,(err, rows, fields) => {
@@ -22,8 +32,10 @@ Router.get('/get', async (req, res, next) => {
     })
 });
 
+
 //usuario x ID
 Router.get('/get/:id', async (req, res) => {
+
     console.log("Seleccionar usuario con id: "+ req.params.id)
 
     const idusuario= req.params.id
@@ -43,6 +55,7 @@ Router.get('/get/:id', async (req, res) => {
 
 //usuario x nombre de usuario y clave
 Router.get('/get/:usuario?:clave', async (req, res) => {
+
     console.log("Seleccionar por usuario y clave: "+ req.params.usuario)
 
     const usuario= req.params.usuario
