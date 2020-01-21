@@ -39,12 +39,15 @@ loginForm = new FormGroup({
 
     const instance = axios.create();
 
-    axios.get('http://localhost:3000/usuarios/get/?usuario=' + username + '&clave=' + password).then(resp => {
+    axios.get('http://localhost:3000/usuarios/get/' + username + '/' + password).then(resp => {
  
       //console.log(resp.data);asdasd
-      alert(JSON.stringify(resp.data));
+      //alert(JSON.stringify(resp.data));
 
-      if (resp.status == 500) {
+      /*if (resp.status == 500) {
+        alert('Usuario/Contraseña incorrecta');
+      }*/
+      if (resp.data.status == 'not found') {
         alert('Usuario/Contraseña incorrecta');
       } else if (resp.data.status == 'ok') {
         alert('Acceso concedido.');

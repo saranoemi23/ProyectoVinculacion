@@ -54,14 +54,14 @@ Router.get('/get/:id', async (req, res) => {
 
 
 //usuario x nombre de usuario y clave
-Router.get('/get/:usuario?:clave', async (req, res) => {
+Router.get('/get/:usuario/:clave', async (req, res) => {
 
     console.log("Seleccionar por usuario y clave: "+ req.params.usuario)
 
     const usuario= req.params.usuario
     const contraseña = req.params.clave
     
-    const queryString = "SELECT u.nombres AS nombres, u.apellidos AS apellidos, u.identidad AS identidad, u.correo AS correo, u.direccion AS direccion, u.usuario AS usuario, r.rol AS rol FROM usuario AS u INNER JOIN rol AS r ON u.idrol = r.idrol WHERE u.usuario = ? AND u.contraseña = ?"
+    const queryString = "SELECT u.usuario AS usuario, u.contraseña AS contraseña, r.rol AS rol FROM usuario AS u INNER JOIN rol AS r ON u.idrol = r.idrol WHERE u.usuario = ? AND u.contraseña = ?"
     connection.query(queryString, [usuario, contraseña],(err, rows, fields) => {
         if(err){
             console.log("No existe usuario " + err)
@@ -70,7 +70,15 @@ Router.get('/get/:usuario?:clave', async (req, res) => {
             return
         }
         console.log("usuario Seleccionado por su usuario y contrase­ña")
-        res.json({status: 'ok'})
+        if (rows.length > 0) {
+            //res.json(rows)
+            res.json({status: 'ok'});
+        } else {
+            //res.sendStatus(500)
+            res.json({status: 'not found'})
+            res.end()
+        }
+        
     })
 });
 
