@@ -34,19 +34,23 @@ loginForm = new FormGroup({
     var username = data.username;
     var password = data.password;
 
+    if (username == '' || password == '') {
+      alert('Ingrese su usuario y contraseña para continuar.');
+      return;
+    }
 
     //console.log("username: " + username + ", password: " + password);
 
     const instance = axios.create();
 
-    axios.get('http://localhost:3000/usuarios/get/' + username + '/' + password).then(resp => {
+    axios.get('http://localhost:3000/usuarios/get/' + username + '/' + password)
+    
+    .then(resp => {
  
       //console.log(resp.data);asdasd
       //alert(JSON.stringify(resp.data));
-
-      /*if (resp.status == 500) {
-        alert('Usuario/Contraseña incorrecta');
-      }*/
+      
+     
       if (resp.data.status == 'not found') {
         alert('Usuario/Contraseña incorrecta');
       } else if (resp.data.status == 'ok') {
@@ -54,6 +58,15 @@ loginForm = new FormGroup({
         this.router.navigate(['/dashboard']) 
       }
 
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+    //if (resp.status == 500) {
+      if (error) {
+      alert('Error al conectarse con el servidor');
+      return;
+    }
   });
 
 

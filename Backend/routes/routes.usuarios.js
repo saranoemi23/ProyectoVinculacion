@@ -64,7 +64,7 @@ Router.get('/get/:usuario/:clave', async (req, res) => {
     const queryString = "SELECT u.usuario AS usuario, u.contraseña AS contraseña, r.rol AS rol FROM usuario AS u INNER JOIN rol AS r ON u.idrol = r.idrol WHERE u.usuario = ? AND u.contraseña = ?"
     connection.query(queryString, [usuario, contraseña],(err, rows, fields) => {
         if(err){
-            console.log("No existe usuario " + err)
+            console.log("database says " + err)
             res.sendStatus(500)
             res.end()
             return
