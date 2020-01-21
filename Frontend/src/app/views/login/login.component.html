@@ -12,17 +12,19 @@
                   </div>
                   <h1 class="text-center">Inicio de Sesión</h1>
                   <p class="text-muted text-center">Por favor escriba sus datos de acceso</p>
+                  <label for="username">Usuario</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-user"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Usuario" autocomplete="username" formControlName="username" required>
+                    <input id="username" type="text" class="form-control" placeholder="Usuario" autocomplete="username" formControlName="username" required>
                   </div>
+                  <label for="password">Contraseña</label>
                   <div class="input-group mb-4">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-lock"></i></span>
                     </div>
-                    <input type="password" class="form-control" placeholder="Contraseña" autocomplete="current-password" formControlName="password" required>
+                    <input id="password" type="password" class="form-control" placeholder="Contraseña" autocomplete="current-password" formControlName="password" required>
                   </div>
                   <div class="row">
                     <div class="col-6 mx-auto">
@@ -30,13 +32,13 @@
                     </div>
                   </div>
                 </form>
-                <a routerLink="/forgot" style="display:block; text-align:center; padding: 10px 0px 2px 0px;">Olvidé mi contraseña</a>
-                <a routerLink="/register" style="display:block; text-align:center; padding: 3px 0px 0px 0px;">Registrar nueva cuenta</a>
+                <a routerLink="/forgot" style="display:block; text-align:center; padding: 20px 0px 5px 0px;">Olvidé mi contraseña</a>
+                <a routerLink="/register" style="display:block; text-align:center; padding: 5px 0px 0px 0px;">Registrar nueva cuenta</a>
               </div>
             </div>
             <div id = "logo" class="card text-white bg-primary py-5 d-md-down-none">
-              <div class="card-body text-center">
-                <div>
+              <div class="card-body">
+                <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
                   <img src = "../../../assets/img/avatars/login.png">
                 </div>
               </div>
