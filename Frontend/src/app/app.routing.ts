@@ -21,21 +21,21 @@ export const routes: Routes = [
     path: '404',
     component: P404Component,
     data: {
-      title: 'Page 404'
+      title: 'Error 404'
     }
   },
   {
     path: '500',
     component: P500Component,
     data: {
-      title: 'Page 500'
+      title: 'Error 500'
     }
   },
   {
     path: 'login',
     component: LoginComponent,
     data: {
-      title: 'Login Page'
+      title: 'Iniciar Sesión'
     }
   },
   {
@@ -49,7 +49,7 @@ export const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
     data: {
-      title: 'Register Page'
+      title: 'Registrar Cuenta'
     }
   },
   {
