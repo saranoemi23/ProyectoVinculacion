@@ -9,6 +9,7 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { ForgotComponent } from './views/forgot/forgot.component';
 import { RegisterComponent } from './views/register/register.component';
+import {  CalificacionesComponent} from "./views/calificaciones/calificaciones.component";
 
 
 export const routes: Routes = [
@@ -52,6 +53,7 @@ export const routes: Routes = [
       title: 'Registrar Cuenta'
     }
   },
+  
   {
     path: '',
     component: DefaultLayoutComponent,

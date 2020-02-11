@@ -6,6 +6,7 @@ import { FormsComponent } from './forms.component';
 import { SwitchesComponent } from './switches.component';
 import { TablesComponent } from './tables.component';
 import { TabsComponent } from './tabs.component';
+import { CalificacionesComponent } from '../calificaciones/calificaciones.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,13 @@ const routes: Routes = [
         component: TabsComponent,
         data: {
           title: 'Secciones'
+        }
+      },
+      {
+        path: 'calificaciones',
+        component: CalificacionesComponent,
+        data: {
+          title: 'calificaciones'
         }
       }
     ]

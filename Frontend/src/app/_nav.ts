@@ -35,6 +35,11 @@ export const navItems: INavData[] = [
         url: '/base/secciones',
         icon: 'icon-grid'
       },   
+      {
+        name: 'Calificaciones',
+        url: '/base/calificaciones',
+        icon: 'icon-graduation'
+      }, 
     ],
   },
   {

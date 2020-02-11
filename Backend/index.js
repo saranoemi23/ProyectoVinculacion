@@ -15,6 +15,8 @@ const Asignatura_DetallesRoutes = require("./routes/routes.asignatura_detalles")
 const UsuariosRoutes = require("./routes/routes.usuarios");
 const Grado_DetalleRoutes = require("./routes/routes.grado_detalles");
 const MatriculaRoutes = require("./routes/routes.matriculas");
+const CalificacionesRoutes = require("./routes/routes.calificaciones");
+const Calificaciones2Routes = require("./routes/routes.calificaciones2");
 
 var app = express();
 
@@ -34,6 +36,8 @@ app.use("/asignatura_detalles", Asignatura_DetallesRoutes);
 app.use("/usuarios", UsuariosRoutes);
 app.use("/grado_detalles", Grado_DetalleRoutes);
 app.use("/matriculas", MatriculaRoutes);
+app.use("/calificaciones", CalificacionesRoutes);
+app.use("/calificaciones2", Calificaciones2Routes);
 
 app.listen(3000, () =>{
     console.log('Server on port 3000');

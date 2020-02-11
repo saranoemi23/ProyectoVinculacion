@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+  import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -44,6 +44,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { DashboardModule } from './views/dashboard/dashboard.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { DashboardModule } from './views/dashboard/dashboard.module';
     TabsModule.forRoot(),
     ChartsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
@@ -70,7 +72,7 @@ import { DashboardModule } from './views/dashboard/dashboard.module';
     P500Component,
     LoginComponent,
     ForgotComponent,
-    RegisterComponent
+    RegisterComponent,
   
   ],
   providers: [{

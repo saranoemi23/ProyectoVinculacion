@@ -1,0 +1,315 @@
+<div class="animated fadeIn">
+    <!--/.row//////////////////////////////////-->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-edit"></i>Agregar Calificacion
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal">
+            <!-- <div class="form-group">
+                <div class="row">
+                    <div class="col-4">
+                        <label class="col-form-label" for="Grado">Grado</label>
+                    </div>
+                    <div class="col-4">
+                        <label class="col-form-label" for="Periodo">Periodo</label>
+                    </div>
+                    <div class="col-4">
+                        <label class="col-form-label" for="Seccion">Seccion</label>
+                    </div>
+              </div>
+              <div class="controls">
+                  <div class="row">
+                    <div class="col-3">
+                      <div class="controls">
+                        <div class="input-group">
+                          <select class="form-control" id="grado" name='idgrado' [(ngModel)]='calificacion.id_grado'>
+                            <option value="0">Seleccione el grado</option>
+                            <option >Primer Grado</option>
+                            <option >Segundo Grado</option>
+                            <option >Tercer Grado</option>
+                            <option >Cuarto Grado</option>
+                            <option >Quinto Grado</option>
+                            <option >Sexto Grado</option>
+                          </select>
+                          <div class="input-group-append">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="col-1"></div>
+                      <div class="col-3">
+                        <div class="controls">
+                          <div class="input-group">
+                            <select class="form-control" id="periodo" name='idperiodo' [(ngModel)]='calificacion.id_periodo'>
+                              <option value="0">Seleccione el grado</option>
+                              <option >I</option>
+                              <option >II</option>
+                              <option >III</option>
+                              <option >IV</option>
+                            </select>
+                            <div class="input-group-append">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-3">
+                      <div class="input-group">
+                        <select class="form-control" id="seccion" name='idseccion' [(ngModel)]='calificacion.id_seccion'>
+                          <option value="0">Seleccione el Seccion</option>
+                          <option >A</option>
+                          <option >B</option>
+                          <option >U</option>
+                        </select>
+                        <div class="input-group-append">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div> -->
+          
+              <div class="form-group" >                                    <!--iniciando la seccion de filtro-->
+              <div class="row">
+                <div class="col-4">
+                <label class="col-form-label" for="grado">Grado</label>
+                <div class="controls">
+                  <div class="input-group">
+                    <select class="form-control" id="grado" name='idgrado' [(ngModel)]='calificacio.idgrado'>
+                      <option value="0">Seleccione el grado</option>
+                      <option >Primer Grado</option>
+                      <option >Segundo Grado</option>
+                      <option >Tercer Grado</option>
+                      <option >Cuarto Grado</option>
+                      <option >Quinto Grado</option>
+                      <option >Sexto Grado</option>
+                    </select>
+                    <div class="input-group-append">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <label class="col-form-label" for="grado">Periodo</label>
+                <div class="controls">
+                  <div class="input-group">
+                    <select class="form-control" id="periodo" name='idperiodo' [(ngModel)]='calificacio.idperiodo'>
+                      <option value="0">Seleccione el periodo</option>
+                      <option >I</option>
+                      <option >II</option>
+                      <option >III</option>
+                      <option >IV</option>
+                    </select>
+                    <div class="input-group-append">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <label class="col-form-label" for="grado">Seccion</label>
+                <div class="controls">
+                  <div class="input-group">
+                    <select class="form-control" id="seccion" name='idseccion' [(ngModel)]='calificacio.idseccion'>
+                      <option value="0">Seleccione la seccion</option>
+                      <option >A</option>
+                      <option >B</option>
+                    </select>
+                    <div class="input-group-append">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div>                                                            <!--Cerrando la seccion de filtro-->
+
+            <div class="form-group">                                             <!--iniciando la seccion de formulario notas-->
+                <div class="row">
+                    <div class="col-4">
+                        <label class="col-form-label" for="Alumno">Alumno</label>
+                    </div>
+                    <div class="col-4">
+                        <label class="col-form-label" for="asignatura">asignatura</label>
+                    </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                    <div class="input-prepend input-group">
+                      <div class="input-group-prepend">
+                      </div>
+                      <input id="Alumno" name="idalumno" class="form-control" size="16" type="text"
+                        [(ngModel)]="calificacion.idgrado_detalle" autocomplete="off">
+                    </div>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-3">
+                  <div class="input-group">
+                    <select class="form-control" id="asignatura" name='idasignatura' onclick="MostrarGradoFiltro()" [(ngModel)]='calificacion.idasignatura'>
+                      <option value="0">Seleccione la asignatura</option>
+                      <option >EDC</option>
+                      <option >MAT</option>
+                      <option >ESP</option>
+                      <option >CCS</option>
+                      <option >CCN</option>
+                      <option >EDA</option>
+                      <option >ING</option>
+                      <option >COM</option>
+                    </select>
+                    <div class="input-group-append">
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <br>
+            <hr>
+                    <!-- Agregando calificaciones -->
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-4">
+                        <label class="col-form-label" for="acumulado">Acumulado</label>
+                    </div>
+                    <div class="col-4">
+                        <label class="col-form-label" for="examen">Examen</label>
+                    </div>
+                    <div class="col-4">
+                        <label class="col-form-label" for="total">Total</label>
+                    </div>
+              </div>
+              <div class="controls">
+                  <div class="row">
+                      <div class="col-3">
+                          <div class="input-prepend input-group">
+                            <div class="input-group-prepend">
+                            </div>
+                            <input id="acumulado" name="acumulado" class="form-control" size="16" type="text"
+                              [(ngModel)]="calificacion.Acumulado" autocomplete="off">
+                          </div>
+                      </div>
+                      <div class="col-1"></div>
+                      <div class="col-3">
+                        <div class="input-prepend input-group">
+                          <div class="input-group-prepend">
+                          </div>
+                          <input id="examen" name="examen" class="form-control" size="16" type="text"
+                            [(ngModel)]="calificacion.Examen" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-3">
+                        <div class="input-prepend input-group">
+                          <div class="input-group-prepend">
+                          </div>
+                          <input id="total" name="total" class="form-control" size="16" type="text"
+                            [(ngModel)]="calificacion.Total" autocomplete="off">
+                        </div>
+                    </div>
+                  
+                  </div>
+              </div>
+            </div>
+
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary"
+              (click)="savecalificacion()"
+              >Guardar</button>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div> <!--/.col-->
+    </div><!--/.row-->                                             <!--Cerrando la seccion de formulario notas-->                          
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-align-justify"></i> Lista de Calificaciones
+          </div>
+          <div class="card-body">
+            <!--Queriendo aregar un acordeon-->
+
+              <!-- <p>
+                <a href="#test" class="btn btn-primary" data-toggle="collapse" >
+                  Nota
+                </a>
+              </p>
+              <div class="collapse" id="test">
+                <div class="card card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                </div>
+              </div> -->
+  
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Nombre niño</th>
+                          <th colspan="3" scope="col">   Matematicas   </th>
+                          <th colspan="3">   Espanol   </th>
+                          <th colspan="3">   Fisica   </th>
+                          <th colspan="3">   Ciencias Sociales   </th>
+                          <th colspan="3">   Ciencias Naturales   </th>
+                          <th colspan="3">   Ingles   </th>
+                          <th colspan="3">   computacion   </th>
+                          <th colspan="3">   Civica   </th>
+                          <th scope="col">Accion</th>
+                        </tr>
+                        <tr>
+                          <th> _ </th>
+                          <th>_ _ _ _ _ _ _</th>
+                          <th>Acu.</th>
+                          <th>Exa.</th>
+                          <th>Tot.</th>
+                          <th>Acu.</th>
+                          <th>Exa.</th>
+                          <th>Tot.</th>
+                          <th>Acu.</th>
+                          <th>Exa.</th>
+                          <th>Tot.</th>
+                          <th>Acu.</th>
+                          <th>Exa.</th>
+                          <th>Tot.</th>
+                          <th>Acu.</th>
+                          <th>Exa.</th>
+                          <th>Tot.</th>
+                          <th>Acu.</th>
+                          <th>Exa.</th>
+                          <th>Tot.</th>
+                          <th>Acu.</th>
+                          <th>Exa.</th>
+                          <th>Tot.</th>
+                          <th>Acu.</th>
+                          <th>Exa.</th>
+                          <th>Tot.</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let calif of calificacio">
+                          <td>{{calif.idnotas}}</td>
+                          <td>{{calif.idalumno}}</td>
+                          <td>{{calif.Acumulado}}</td>
+                          <td>{{calif.Examen}}</td>
+                          <td>{{calif.Total}}</td>
+                          <td>
+                            <!-- <div class="btn-group" role="group">
+                            <button class="btn btn-primary" (click)="seleccionarAsignatura(asignatura)">Editar</button>
+                            <button class="btn btn-primary" (click)="eliminarAsignatura(asignatura)">Eliminar</button>
+                            </div> -->
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>  
+
+        
+        </div>
+      </div>
+      <!--/.col-->
+    </div>
+    <!--/.row-->
+  </div>
+  
