@@ -32,8 +32,8 @@ export class CalificacionesService {
     return this.http.put(`${this.API_URI}edit/${id}`,updatecalificacion);
   }
 
-  filtroGrado(){
-    return this.http.get(`${this.API_URI}filtro_c/:grado/:periodo/:seccion`);
+  filtroGrado(grado:string,periodo:string,seccion:string){
+    return this.http.get(`${this.API_URI}filtro_c/:grado/:periodo/:seccion${grado},${periodo},${seccion}`);
   }
   
 

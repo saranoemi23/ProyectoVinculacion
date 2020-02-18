@@ -1,5 +1,5 @@
 export class calificaciones {
-    idnotas : number;
+    idcalificaciones : number;
     Acumulado: number;
     Examen: number;
     Total: number;  

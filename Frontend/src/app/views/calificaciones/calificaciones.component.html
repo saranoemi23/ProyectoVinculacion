@@ -78,7 +78,7 @@
                 <label class="col-form-label" for="grado">Grado</label>
                 <div class="controls">
                   <div class="input-group">
-                    <select class="form-control" id="grado" name='idgrado' [(ngModel)]='calificacio.idgrado'>
+                    <select class="form-control" id="grado" name='idgrado' [(ngModel)]='notas.grado'>
                       <option value="0">Seleccione el grado</option>
                       <option >Primer Grado</option>
                       <option >Segundo Grado</option>
@@ -96,7 +96,7 @@
                 <label class="col-form-label" for="grado">Periodo</label>
                 <div class="controls">
                   <div class="input-group">
-                    <select class="form-control" id="periodo" name='idperiodo' [(ngModel)]='calificacio.idperiodo'>
+                    <select class="form-control" id="periodo" name='idperiodo' [(ngModel)]='notas.periodo'>
                       <option value="0">Seleccione el periodo</option>
                       <option >I</option>
                       <option >II</option>
@@ -112,7 +112,7 @@
                 <label class="col-form-label" for="grado">Seccion</label>
                 <div class="controls">
                   <div class="input-group">
-                    <select class="form-control" id="seccion" name='idseccion' [(ngModel)]='calificacio.idseccion'>
+                    <select class="form-control" id="seccion" name='idseccion' [(ngModel)]='notas.seccion'>
                       <option value="0">Seleccione la seccion</option>
                       <option >A</option>
                       <option >B</option>
@@ -140,13 +140,13 @@
                       <div class="input-group-prepend">
                       </div>
                       <input id="Alumno" name="idalumno" class="form-control" size="16" type="text"
-                        [(ngModel)]="calificacion.idgrado_detalle" autocomplete="off">
+                        [(ngModel)]="calificacion.id_grado_detalle" autocomplete="off">
                     </div>
                 </div>
                 <div class="col-1"></div>
                 <div class="col-3">
                   <div class="input-group">
-                    <select class="form-control" id="asignatura" name='idasignatura' onclick="MostrarGradoFiltro()" [(ngModel)]='calificacion.idasignatura'>
+                    <select class="form-control" id="asignatura" name='idasignatura' onclick="MostrarGradoFiltro()" [(ngModel)]='calificacion.id_asignatura'>
                       <option value="0">Seleccione la asignatura</option>
                       <option >EDC</option>
                       <option >MAT</option>
@@ -173,9 +173,6 @@
                     <div class="col-4">
                         <label class="col-form-label" for="examen">Examen</label>
                     </div>
-                    <div class="col-4">
-                        <label class="col-form-label" for="total">Total</label>
-                    </div>
               </div>
               <div class="controls">
                   <div class="row">
@@ -194,15 +191,6 @@
                           </div>
                           <input id="examen" name="examen" class="form-control" size="16" type="text"
                             [(ngModel)]="calificacion.Examen" autocomplete="off">
-                        </div>
-                    </div>
-                    <div class="col-1"></div>
-                    <div class="col-3">
-                        <div class="input-prepend input-group">
-                          <div class="input-group-prepend">
-                          </div>
-                          <input id="total" name="total" class="form-control" size="16" type="text"
-                            [(ngModel)]="calificacion.Total" autocomplete="off">
                         </div>
                     </div>
                   
@@ -241,7 +229,12 @@
                   Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
                 </div>
               </div> -->
-  
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary"
+                (click)="MostrarGradoFiltro()"
+                >Cargar notas</button>
+              </div>
+
                   <div class="table-responsive">
                     <table class="table table-bordered table-striped">
                       <thead>
@@ -289,8 +282,8 @@
                       </thead>
                       <tbody>
                         <tr *ngFor="let calif of calificacio">
-                          <td>{{calif.idnotas}}</td>
-                          <td>{{calif.idalumno}}</td>
+                          <td>{{calif.idcalificaciones}}</td>
+                          <td>{{calif.id_grado_detalle}}</td>
                           <td>{{calif.Acumulado}}</td>
                           <td>{{calif.Examen}}</td>
                           <td>{{calif.Total}}</td>

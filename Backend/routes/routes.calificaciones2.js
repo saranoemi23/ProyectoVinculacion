@@ -18,42 +18,26 @@ Router.get('/get', (req, res) => {
     })
 });
 
-//asignatura x ID
-Router.get('/get/:id', (req, res) => {
-    console.log("Seleccionar asignatura con id: "+ req.params.id)
 
-    const idasignatura= req.params.id
-    const queryString = "SELECT * FROM asignatura WHERE idasignatura = ?"
-    connection.query(queryString, [idasignatura],(err, rows, fields) => {
-        if(err){
-            console.log("No existe asignatura " + err)
-            res.sendStatus(500)
-            res.end()
-            return
-        }
-        console.log("asignatura Seleccionada")
-        res.json(rows)
-    })
-});
-
+///INSERTAR CALIFICACION
 Router.post('/add', (req, res) =>{
 
     console.log("Tratando de agregar calificacion..")
     console.log("Acumulado: "+ req.body.Acumulado)
     console.log("Examen: "+ req.body.Examen)
     console.log("Total: "+ req.body.Total)
-    console.log("id_asignatura: "+ req.body.idasignatura)
-    console.log("idgrado_detalle: "+ req.body.idgrado_detalle)
+    console.log("id_asignatura: "+ req.body.id_asignatura)
+    console.log("idgrado_detalle: "+ req.body.id_grado_detalle)
 
    
     const Acumulado = req.body.Acumulado
     const Examen = req.body.Examen
     const Total = req.body.Total
-    const idasignatura = req.body.idasignatura
-    const idgrado_detalle = req.body.idgrado_detalle
+    const id_asignatura = req.body.id_asignatura
+    const idgrado_detalle = req.body.id_grado_detalle
 
-    const queryString = "INSERT INTO notas (Acumulado, Examen, Total, idasignatura,idgrado_detalle)  VALUES  (?,?,?,(SELECT idasignatura FROM asignatura WHERE asignatura=?),(SELECT idgrado_detalle FROM grado_detalle WHERE idalumno=?))"
-    connection.query(queryString, [Acumulado, Examen,Total,idasignatura,idgrado_detalle], (err, results, fields) =>{
+    const queryString = "INSERT INTO calificaciones (Acumulado, Examen, id_asignatura, id_grado_detalle)  VALUES  (?, ?, (SELECT idasignatura FROM asignatura WHERE asignatura= ?), (SELECT idgrado_detalle FROM grado_detalle WHERE idalumno = (SELECT idalumno FROM alumno WHERE nombrec = ?)))"
+    connection.query(queryString, [Acumulado, Examen,id_asignatura,idgrado_detalle], (err, results, fields) =>{
         if (err){
             console.log("Error en calificacion: "+ err)
             res.sendStatus(500)
@@ -65,37 +49,13 @@ Router.post('/add', (req, res) =>{
     } )
 });
 
-Router.put('/edit/:id', (req, res) =>{
-
-    console.log("Tratando de editar un asignatura..")
-    console.log("asignatura: "+ req.body.asignatura)
-    console.log("Descripcion: "+ req.body.descripcion)
-   
-    const idasignatura = req.params.id
-    const asignatura = req.body.asignatura
-    const descripcion = req.body.descripcion
-
-    console.log(idasignatura)
-    const queryString = "UPDATE asignatura SET asignatura = ?, descripcion = ? WHERE idasignatura = ?"
-    connection.query(queryString, [asignatura, descripcion, idasignatura], (err, results, fields) =>{
-        if (err){
-            console.log("Error al editar asignatura: "+ err)
-            res.sendStatus(400)
-            return
-        }
-
-        console.log("Se edito asignatura con id: ", results.affectedRows);
-        res.end() 
-        
-    } )
-});
 
 Router.delete('/delete/:id', (req, res) => {
-    console.log("Eliminar asignatura con id: "+ req.params.id)
+    console.log("Eliminar calificaciones con id: "+ req.params.id)
 
-    const idasignatura = req.params.id
-    const queryString = "DELETE FROM asignatura WHERE idasignatura =?"
-    connection.query(queryString, [idasignatura],(err, rows, fields) => {
+    const idCalificaciones = req.params.id
+    const queryString = "DELETE FROM calificaciones WHERE idCalificaciones =?"
+    connection.query(queryString, [idCalificaciones],(err, rows, fields) => {
         if(err){
             console.log("No existe asignatura " + err)
             res.sendStatus(500)
@@ -117,7 +77,7 @@ Router.get('/filtro_c/:grado/:periodo/:seccion', (req, res) => {
     const periodo = req.params.periodo
     const seccion = req.params.seccion
 
-    const queryString = "SELECT CONCAT_WS(' ', a.nombres, a.apellidos) AS alumno, asi.asignatura, n.acumulado, n.examen, n.total FROM notas AS n INNER JOIN grado_detalle AS gd ON n.idgrado_detalle = gd.idgrado_detalle INNER JOIN asignatura AS asi ON n.idasignatura = asi.idasignatura INNER JOIN alumno AS a ON gd.idalumno = a.idalumno INNER JOIN grado AS g ON gd.idgrado = g.idgrado INNER JOIN periodo AS p ON p.idperiodo = g.idperiodo INNER JOIN seccion AS s ON g.idseccion = s.idseccion WHERE g.grado = ? AND p.periodo = ? AND s.seccion = ?;"
+    const queryString = "SELECT CONCAT_WS(' ', a.nombres, a.apellidos) AS alumno, asi.asignatura, c.acumulado, c.examen, c.total FROM calificaciones AS c INNER JOIN grado_detalle AS gd ON c.id_grado_detalle = gd.idgrado_detalle INNER JOIN asignatura AS asi ON c.id_asignatura = asi.idasignatura INNER JOIN alumno AS a ON gd.idalumno = a.idalumno INNER JOIN grado AS g ON gd.idgrado = g.idgrado INNER JOIN periodo AS p ON p.idperiodo = g.idperiodo INNER JOIN seccion AS s ON g.idseccion = s.idseccion WHERE g.grado = ? AND p.periodo = ? AND s.seccion = ?;"
     connection.query(queryString, [grado, periodo, seccion],(err, rows, fields) => {
         if(err){
             console.log("No existe notas " + err)
@@ -156,5 +116,12 @@ Router.get('/filtro_a/:grado/:periodo/:seccion/:nombres/:apellidos', (req, res) 
         res.json(rows)
     })
 });
+
+
+
+
+
+///VER CALIFICACIONES X ALUMNO
+
 
 module.exports = Router;

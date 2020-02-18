@@ -8,8 +8,9 @@ import {  calificaciones} from "../../models/calificaciones";
   styleUrls: ['./calificaciones.component.css']
 })
 export class CalificacionesComponent implements OnInit {
-   calificacio :any=[];
-   calificacion : any;
+   calificacio :calificaciones[];
+   calificacion : any=[];
+   notas :any;
 
   constructor(private calificacionService : CalificacionesService) {
     this.calificacion = new calificaciones();
@@ -17,8 +18,8 @@ export class CalificacionesComponent implements OnInit {
 
 
   ngOnInit() {
-   // this.getcalificaciones();
-   this.MostrarGradoFiltro()
+ //   this.getcalificaciones();
+   
   }
 
     getcalificaciones(){
@@ -53,10 +54,10 @@ export class CalificacionesComponent implements OnInit {
       )
     }
 
-    MostrarGradoFiltro(){
+    MostrarGradoFiltro(grado,periodo,seccion){
       {
-        this.calificacionService. filtroGrado().subscribe(data => {
-          this.calificacio = data;
+        this.calificacionService. filtroGrado(grado,periodo,seccion).subscribe(data => {
+          this.notas = data;
         } ,
           err => console.error(err) )
       };
