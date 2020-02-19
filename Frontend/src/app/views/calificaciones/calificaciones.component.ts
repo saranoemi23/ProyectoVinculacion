@@ -10,7 +10,7 @@ import {  calificaciones} from "../../models/calificaciones";
 export class CalificacionesComponent implements OnInit {
    calificacio :calificaciones[];
    calificacion : any=[];
-   notas :any;
+   notas :any=[];
 
   constructor(private calificacionService : CalificacionesService) {
     this.calificacion = new calificaciones();
@@ -18,7 +18,7 @@ export class CalificacionesComponent implements OnInit {
 
 
   ngOnInit() {
- //   this.getcalificaciones();
+   this.getcalificaciones();
    
   }
 
