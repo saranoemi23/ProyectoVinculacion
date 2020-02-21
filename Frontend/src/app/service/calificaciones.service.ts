@@ -36,5 +36,8 @@ export class CalificacionesService {
     return this.http.get(`${this.API_URI}filtro_c/${grado}/${periodo}/${seccion}`);
   }
   
+  filtroAlumno(grado:number,periodo:number,seccion:number,alumno:number){
+    return this.http.get(`${this.API_URI}filtro_c/${grado}/${periodo}/${seccion}/${alumno}`);
+  }
 
 }

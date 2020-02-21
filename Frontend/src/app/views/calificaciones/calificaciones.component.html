@@ -72,60 +72,31 @@
               </div>
             </div> -->
           
-              <div class="form-group" >                                    <!--iniciando la seccion de filtro-->
-              <div class="row">
-                <div class="col-4">
-                <label class="col-form-label" for="grado">Grado</label>
-                <div class="controls">
-                  <div class="input-group">
-                    <select class="form-control" id="grado" name='idgrado' [(ngModel)]='notas.grado'>
-                      <option value="0">Seleccione el grado</option>
-                      <option >Primer Grado</option>
-                      <option >Segundo Grado</option>
-                      <option >Tercer Grado</option>
-                      <option >Cuarto Grado</option>
-                      <option >Quinto Grado</option>
-                      <option >Sexto Grado</option>
-                    </select>
-                    <div class="input-group-append">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-4">
-                <label class="col-form-label" for="grado">Periodo</label>
-                <div class="controls">
-                  <div class="input-group">
-                    <select class="form-control" id="periodo" name='idperiodo' [(ngModel)]='notas.periodo'>
-                      <option value="0">Seleccione el periodo</option>
-                      <option >I</option>
-                      <option >II</option>
-                      <option >III</option>
-                      <option >IV</option>
-                    </select>
-                    <div class="input-group-append">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-4">
-                <label class="col-form-label" for="grado">Seccion</label>
-                <div class="controls">
-                  <div class="input-group">
-                    <select class="form-control" id="seccion" name='idseccion' [(ngModel)]='notas.seccion'>
-                      <option value="0">Seleccione la seccion</option>
-                      <option >A</option>
-                      <option >B</option>
-                    </select>
-                    <div class="input-group-append">
-                    </div>
-                  </div>
+            <label class="col-form-label" for="grado">Selecione un grado para ingresar notas</label>
+            <div class="controls">
+              <div class="input-group">
+                <select class="form-control" id="grado" name='idgrado' [(ngModel)]='notas.grado'>
+                  <option value="0">Seleccione el grado</option>
+                  <option >Primer Grado</option>
+                  <option >Segundo Grado</option>
+                  <option >Tercer Grado</option>
+                  <option >Cuarto Grado</option>
+                  <option >Quinto Grado</option>
+                  <option >Sexto Grado</option>
+                </select>
+                <div class="input-group-append">
                 </div>
               </div>
             </div>
-              </div>                                                            <!--Cerrando la seccion de filtro-->
-
+            <br>
+            
             <div class="form-group">                                             <!--iniciando la seccion de formulario notas-->
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary"
+                (click)="MostrarGradoFiltro()"
+                >Cargar alumnos</button>
+              </div>
+
                 <div class="row">
                     <div class="col-4">
                         <label class="col-form-label" for="Alumno">Alumno</label>
@@ -133,6 +104,9 @@
                     <div class="col-4">
                         <label class="col-form-label" for="asignatura">asignatura</label>
                     </div>
+                    <div class="col-4">
+                      <label class="col-form-label" for="asignatura">Periodo</label>
+                  </div>
               </div>
               <div class="row">
                 <div class="col-3">
@@ -156,6 +130,20 @@
                       <option >EDA</option>
                       <option >ING</option>
                       <option >COM</option>
+                    </select>
+                    <div class="input-group-append">
+                    </div>
+                  </div>
+              </div>
+              <div class="col-1"></div>
+              <div class="col-3">
+                  <div class="input-group">
+                    <select class="form-control" id="periodo" name='idperiodo' [(ngModel)]='notas.periodo'>
+                      <option value="0">Seleccione el periodo</option>
+                      <option >I</option>
+                      <option >II</option>
+                      <option >III</option>
+                      <option >IV</option>
                     </select>
                     <div class="input-group-append">
                     </div>
@@ -229,13 +217,73 @@
                   Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
                 </div>
               </div> -->
+
+              <div class="form-group" >                                    <!--iniciando la seccion de filtro-->
+                <div class="row">
+                  <div class="col-4">
+                  <label class="col-form-label" for="grado">Grado</label>
+                  <div class="controls">
+                    <div class="input-group">
+                      <select class="form-control" id="grado" name='idgrado' [(ngModel)]='notas.grado'>
+                        <option value="0">Seleccione el grado</option>
+                        <option >Primer Grado</option>
+                        <option >Segundo Grado</option>
+                        <option >Tercer Grado</option>
+                        <option >Cuarto Grado</option>
+                        <option >Quinto Grado</option>
+                        <option >Sexto Grado</option>
+                      </select>
+                      <div class="input-group-append">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <label class="col-form-label" for="grado">Periodo</label>
+                  <div class="controls">
+                    <div class="input-group">
+                      <select class="form-control" id="periodo" name='idperiodo' [(ngModel)]='notas.periodo'>
+                        <option value="0">Seleccione el periodo</option>
+                        <option >I</option>
+                        <option >II</option>
+                        <option >III</option>
+                        <option >IV</option>
+                      </select>
+                      <div class="input-group-append">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <label class="col-form-label" for="grado">Seccion</label>
+                  <div class="controls">
+                    <div class="input-group">
+                      <select class="form-control" id="seccion" name='idseccion' [(ngModel)]='notas.seccion'>
+                        <option value="0">Seleccione la seccion</option>
+                        <option >U</option>
+                        <option >A</option>
+                        <option >B</option>
+                      </select>
+                      <div class="input-group-append">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                </div>                                                            <!--Cerrando la seccion de filtro-->
+
               <div class="form-actions">
                 <button type="submit" class="btn btn-primary"
                 (click)="MostrarGradoFiltro()"
                 >Cargar notas</button>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-primary"
+                (click)="MostrarAlumnoFiltro()"
+                >Cargar notas por alumno</button>
               </div>
 
-                  <div class="table-responsive">
+                 <!--  <div class="table-responsive">
                     <table class="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -288,15 +336,47 @@
                           <td>{{calif.Examen}}</td>
                           <td>{{calif.Total}}</td>
                           <td>
-                            <!-- <div class="btn-group" role="group">
+                            <div class="btn-group" role="group">
                             <button class="btn btn-primary" (click)="seleccionarAsignatura(asignatura)">Editar</button>
                             <button class="btn btn-primary" (click)="eliminarAsignatura(asignatura)">Eliminar</button>
-                            </div> -->
+                            </div> 
                           </td>
                         </tr>
                       </tbody>
                     </table>
-                  </div>  
+                  </div>  -->
+
+                  <br>
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Nombre niño</th>
+                          <th >   asignatura   </th>
+                          <th >   Acumulado   </th>
+                          <th >   Examen   </th>
+                          <th >   Total   </th>
+                          <th >   Acciones   </th>
+                        </tr>
+                      <tbody>
+                        <tr *ngFor="let calif of notas">
+                          <td>{{calif.nombrec}}</td>
+                          <td></td>
+                          <td>{{calif.asignatura}}</td>
+                          <td>{{calif.Acumulado}}</td>
+                          <td>{{calif.Examen}}</td>
+                          <td>{{calif.Total}}</td>
+                          <td>
+                            <div class="btn-group" role="group">
+                            <button class="btn btn-success" (click)="seleccionarAsignatura(asignatura)">Editar</button>
+                            <button class="btn btn-success" (click)="eliminarAsignatura(asignatura)">Eliminar</button>
+                            </div>  
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div> 
 
         
         </div>

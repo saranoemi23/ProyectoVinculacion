@@ -3,7 +3,7 @@ export class calificaciones {
     Acumulado: number;
     Examen: number;
     Total: number;  
-    idasignatura: number;
-    idgrado_detalle:number;
+    id_asignatura: number;
+    id_grado_detalle:number;
     
 }

@@ -91,7 +91,7 @@ Router.get('/filtro_c/:grado/:periodo/:seccion', (req, res) => {
 });
 
 ////Notas x grado & periodo & seccion & alumno
-Router.get('/filtro_a/:grado/:periodo/:seccion/:nombres/:apellidos', (req, res) => {
+Router.get('/filtro_a/:grado/:periodo/:seccion/:nombrec', (req, res) => {
     console.log("Seleccionar asignatura con grado: "+ req.params.grado)
     console.log("Seleccionar asignatura con periodo: "+ req.params.periodo)
     console.log("Seleccionar asignatura con seccion: "+ req.params.seccion)
@@ -101,11 +101,10 @@ Router.get('/filtro_a/:grado/:periodo/:seccion/:nombres/:apellidos', (req, res) 
     const grado= req.params.grado
     const periodo = req.params.periodo
     const seccion = req.params.seccion
-    const nombres = req.params.nombres
-    const apellidos = req.params.apellidos
+    const nombrec = req.params.nombrec
 
-    const queryString = "SELECT CONCAT_WS(' ', a.nombres, a.apellidos) AS alumno, asi.asignatura, n.acumulado, n.examen, n.total FROM notas AS n INNER JOIN grado_detalle AS gd ON n.idgrado_detalle = gd.idgrado_detalle INNER JOIN asignatura AS asi ON n.idasignatura = asi.idasignatura INNER JOIN alumno AS a ON gd.idalumno = a.idalumno INNER JOIN grado AS g ON gd.idgrado = g.idgrado INNER JOIN periodo AS p ON p.idperiodo = g.idperiodo INNER JOIN seccion AS s ON g.idseccion = s.idseccion WHERE g.grado = ? AND p.periodo = ? AND s.seccion = ? AND a.nombres LIKE ? AND a.apellidos = ?;"
-    connection.query(queryString, [grado, periodo, seccion, nombres, apellidos],(err, rows, fields) => {
+    const queryString = "SELECT CONCAT_WS(' ', a.nombrec) AS alumno, asi.asignatura, c.acumulado, c.examen, c.total FROM calificaciones AS c INNER JOIN grado_detalle AS gd ON c.id_grado_detalle = gd.idgrado_detalle INNER JOIN asignatura AS asi ON c.id_asignatura = asi.idasignatura INNER JOIN alumno AS a ON gd.idalumno = a.idalumno INNER JOIN grado AS g ON gd.idgrado = g.idgrado INNER JOIN periodo AS p ON p.idperiodo = g.idperiodo INNER JOIN seccion AS s ON g.idseccion = s.idseccion WHERE g.grado = ? AND p.periodo = ? AND s.seccion = ? AND a.nombrec= ?;"
+    connection.query(queryString, [grado, periodo, seccion, nombrec],(err, rows, fields) => {
         if(err){
             console.log("No existe notas " + err)
             res.sendStatus(500)

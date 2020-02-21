@@ -63,4 +63,13 @@ export class CalificacionesComponent implements OnInit {
       };
     }
 
+    MostrarAlumnoFiltro(grado,periodo,seccion,alumno){
+      {
+        this.calificacionService. filtroAlumno(grado,periodo,seccion,alumno).subscribe(data => {
+          this.notas = data;
+        } ,
+          err => console.error(err) )
+      };
+    }
+
 }
