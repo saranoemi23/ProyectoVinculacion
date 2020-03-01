@@ -72,28 +72,65 @@
               </div>
             </div> -->
           
-            <label class="col-form-label" for="grado">Selecione un grado para ingresar notas</label>
-            <div class="controls">
-              <div class="input-group">
-                <select class="form-control" id="grado" name='idgrado' [(ngModel)]='notas.grado'>
-                  <option value="0">Seleccione el grado</option>
-                  <option >Primer Grado</option>
-                  <option >Segundo Grado</option>
-                  <option >Tercer Grado</option>
-                  <option >Cuarto Grado</option>
-                  <option >Quinto Grado</option>
-                  <option >Sexto Grado</option>
-                </select>
-                <div class="input-group-append">
+            <div class="form-group" >                                    <!--iniciando la seccion de filtro para mostrar alumnos-->
+              <div class="row">
+                <div class="col-4">
+                <label class="col-form-label" for="grado">Grado</label>
+                <div class="controls">
+                  <div class="input-group">
+                    <select class="form-control" id="grado" name='idgrado' [(ngModel)]='notas.grado'>
+                      <option value="0">Seleccione el grado</option>
+                      <option >Primer Grado</option>
+                      <option >Segundo Grado</option>
+                      <option >Tercer Grado</option>
+                      <option >Cuarto Grado</option>
+                      <option >Quinto Grado</option>
+                      <option >Sexto Grado</option>
+                    </select>
+                    <div class="input-group-append">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <label class="col-form-label" for="grado">Periodo</label>
+                <div class="controls">
+                  <div class="input-group">
+                    <select class="form-control" id="periodo" name='idperiodo' [(ngModel)]='notas.periodo'>
+                      <option value="0">Seleccione el periodo</option>
+                      <option >I</option>
+                      <option >II</option>
+                      <option >III</option>
+                      <option >IV</option>
+                    </select>
+                    <div class="input-group-append">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <label class="col-form-label" for="grado">Seccion</label>
+                <div class="controls">
+                  <div class="input-group">
+                    <select class="form-control" id="seccion" name='idseccion' [(ngModel)]='notas.seccion'>
+                      <option value="0">Seleccione la seccion</option>
+                      <option >U</option>
+                      <option >A</option>
+                      <option >B</option>
+                    </select>
+                    <div class="input-group-append">
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+              </div>  
             <br>
             
             <div class="form-group">                                             <!--iniciando la seccion de formulario notas-->
               <div class="form-actions">
                 <button type="submit" class="btn btn-primary"
-                (click)="MostrarGradoFiltro()"
+                (click)="MostrarAlumnosFiltro()"
                 >Cargar alumnos</button>
               </div>
 
@@ -110,17 +147,19 @@
               </div>
               <div class="row">
                 <div class="col-3">
-                    <div class="input-prepend input-group">
-                      <div class="input-group-prepend">
-                      </div>
-                      <input id="Alumno" name="idalumno" class="form-control" size="16" type="text"
-                        [(ngModel)]="calificacion.id_grado_detalle" autocomplete="off">
+                  <div class="input-group">
+                    <select class="form-control" id="alumno" name='idalumno'  onclick="MostrarAlumnosFiltro()" [(ngModel)]='calificacion.id_grado_detalle'>
+                      <option value="0" >Seleccione alumno</option>
+                      <option *ngFor="let alum of alumnos">{{alum.nombrec}}</option>
+                    </select>
+                    <div class="input-group-append">
                     </div>
+                  </div>
                 </div>
                 <div class="col-1"></div>
                 <div class="col-3">
                   <div class="input-group">
-                    <select class="form-control" id="asignatura" name='idasignatura' onclick="MostrarGradoFiltro()" [(ngModel)]='calificacion.id_asignatura'>
+                    <select class="form-control" id="asignatura" name='idasignatura'  [(ngModel)]='calificacion.id_asignatura'>
                       <option value="0">Seleccione la asignatura</option>
                       <option >EDC</option>
                       <option >MAT</option>

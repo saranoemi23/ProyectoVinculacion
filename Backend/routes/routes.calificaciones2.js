@@ -19,6 +19,7 @@ Router.get('/get', (req, res) => {
 });
 
 
+
 ///INSERTAR CALIFICACION
 Router.post('/add', (req, res) =>{
 
@@ -67,7 +68,7 @@ Router.delete('/delete/:id', (req, res) => {
     })
 });
 
-////Notas x grado & periodo & seccion
+////Calificaciones x grado & periodo & seccion
 Router.get('/filtro_c/:grado/:periodo/:seccion', (req, res) => {
     console.log("Seleccionar asignatura con grado: "+ req.params.grado)
     console.log("Seleccionar asignatura con periodo: "+ req.params.periodo)
@@ -77,7 +78,9 @@ Router.get('/filtro_c/:grado/:periodo/:seccion', (req, res) => {
     const periodo = req.params.periodo
     const seccion = req.params.seccion
 
-    const queryString = "SELECT CONCAT_WS(' ', a.nombres, a.apellidos) AS alumno, asi.asignatura, c.acumulado, c.examen, c.total FROM calificaciones AS c INNER JOIN grado_detalle AS gd ON c.id_grado_detalle = gd.idgrado_detalle INNER JOIN asignatura AS asi ON c.id_asignatura = asi.idasignatura INNER JOIN alumno AS a ON gd.idalumno = a.idalumno INNER JOIN grado AS g ON gd.idgrado = g.idgrado INNER JOIN periodo AS p ON p.idperiodo = g.idperiodo INNER JOIN seccion AS s ON g.idseccion = s.idseccion WHERE g.grado = ? AND p.periodo = ? AND s.seccion = ?;"
+    
+
+    const queryString = "SELECT a.nombrec, asi.asignatura, n.acumulado, n.examen, n.total FROM calificaciones AS n INNER JOIN grado_detalle AS gd ON n.id_grado_detalle = gd.idgrado_detalle INNER JOIN asignatura AS asi ON n.id_asignatura = asi.idasignatura INNER JOIN alumno AS a ON gd.idalumno = a.idalumno INNER JOIN grado AS g ON gd.idgrado = g.idgrado INNER JOIN periodo AS p ON p.idperiodo = g.idperiodo INNER JOIN seccion AS s ON g.idseccion = s.idseccion WHERE g.grado = ? AND p.periodo = ? AND s.seccion = ? "
     connection.query(queryString, [grado, periodo, seccion],(err, rows, fields) => {
         if(err){
             console.log("No existe notas " + err)
@@ -90,20 +93,21 @@ Router.get('/filtro_c/:grado/:periodo/:seccion', (req, res) => {
     })
 });
 
-////Notas x grado & periodo & seccion & alumno
+////Calificaciones x grado & periodo & seccion & alumno
 Router.get('/filtro_a/:grado/:periodo/:seccion/:nombrec', (req, res) => {
     console.log("Seleccionar asignatura con grado: "+ req.params.grado)
     console.log("Seleccionar asignatura con periodo: "+ req.params.periodo)
     console.log("Seleccionar asignatura con seccion: "+ req.params.seccion)
-    console.log("Seleccionar asignatura con nombres: "+ req.params.nombres)
+    console.log("Seleccionar asignatura con nombres: "+ req.params.nombrec)
     console.log("Seleccionar asignatura con apellidos: "+ req.params.apellidos)
 
     const grado= req.params.grado
     const periodo = req.params.periodo
     const seccion = req.params.seccion
     const nombrec = req.params.nombrec
+    
 
-    const queryString = "SELECT CONCAT_WS(' ', a.nombrec) AS alumno, asi.asignatura, c.acumulado, c.examen, c.total FROM calificaciones AS c INNER JOIN grado_detalle AS gd ON c.id_grado_detalle = gd.idgrado_detalle INNER JOIN asignatura AS asi ON c.id_asignatura = asi.idasignatura INNER JOIN alumno AS a ON gd.idalumno = a.idalumno INNER JOIN grado AS g ON gd.idgrado = g.idgrado INNER JOIN periodo AS p ON p.idperiodo = g.idperiodo INNER JOIN seccion AS s ON g.idseccion = s.idseccion WHERE g.grado = ? AND p.periodo = ? AND s.seccion = ? AND a.nombrec= ?;"
+    const queryString = "SELECT asi.asignatura, n.acumulado, n.examen, n.total FROM calificaciones AS n INNER JOIN grado_detalle AS gd ON n.id_grado_detalle = gd.idgrado_detalle INNER JOIN asignatura AS asi ON n.id_asignatura = asi.idasignatura INNER JOIN alumno AS a ON gd.idalumno = a.idalumno INNER JOIN grado AS g ON gd.idgrado = g.idgrado INNER JOIN periodo AS p ON p.idperiodo = g.idperiodo INNER JOIN seccion AS s ON g.idseccion = s.idseccion WHERE g.grado = ? AND p.periodo = ? AND s.seccion = ? AND a.nombrec = ?"
     connection.query(queryString, [grado, periodo, seccion, nombrec],(err, rows, fields) => {
         if(err){
             console.log("No existe notas " + err)
@@ -117,10 +121,31 @@ Router.get('/filtro_a/:grado/:periodo/:seccion/:nombrec', (req, res) => {
 });
 
 
+///FILTRO NOMBRE ALUMNOS X SECCION, GRADO Y GRADO
+
+Router.get('/alumnos/:grado/:periodo/:seccion', (req, res) => {
+    console.log("Seleccionar alumnos por grado: "+ req.params.grado)
+    console.log("Seleccionar alumnos por seccion: "+ req.params.seccion)
+    console.log("Seleccionar asignatura con periodo: "+ req.params.periodo)
+
+    const grado= req.params.grado
+    const seccion = req.params.seccion
+    const periodo = req.params.periodo
+
+    const queryString = "SELECT a.nombrec FROM alumno AS a INNER JOIN grado_detalle AS gd ON gd.idalumno = a.idalumno INNER JOIN grado AS g ON g.idgrado = gd.idgrado INNER JOIN periodo AS p ON g.idperiodo = p.idperiodo INNER JOIN seccion AS s ON g.idseccion = s.idseccion WHERE g.grado = ? AND p.periodo = ? AND s.seccion = ?;"
+    connection.query(queryString, [grado, periodo, seccion],(err, rows, fields) => {
+        if(err){
+            console.log("No existe notas " + err)
+            res.sendStatus(500)
+            res.end()
+            return
+        }
+        console.log("Notas Seleccionada")
+        res.json(rows)
+    })
+});
 
 
-
-///VER CALIFICACIONES X ALUMNO
 
 
 module.exports = Router;

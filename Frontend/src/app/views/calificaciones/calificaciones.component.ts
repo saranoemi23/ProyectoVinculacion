@@ -11,6 +11,7 @@ export class CalificacionesComponent implements OnInit {
    calificacio :calificaciones[];
    calificacion : any=[];
    notas :any=[];
+   alumnos :any=[];
 
   constructor(private calificacionService : CalificacionesService) {
     this.calificacion = new calificaciones();
@@ -53,20 +54,29 @@ export class CalificacionesComponent implements OnInit {
         }
       )
     }
-
+    //mostramos las calificaciones de alumnos, por grado,perido y seccion
     MostrarGradoFiltro(grado,periodo,seccion){
       {
-        this.calificacionService. filtroGrado(grado,periodo,seccion).subscribe(data => {
+        this.calificacionService.filtroGrado(grado,periodo,seccion).subscribe(data => {
           this.notas = data;
         } ,
           err => console.error(err) )
       };
     }
-
+    //mostramos las calificaciones de alumnos, por grado,perido, seccion de un alumno
     MostrarAlumnoFiltro(grado,periodo,seccion,alumno){
       {
         this.calificacionService. filtroAlumno(grado,periodo,seccion,alumno).subscribe(data => {
           this.notas = data;
+        } ,
+          err => console.error(err) )
+      };
+    }
+    //mostramos  los alumnos, por grado,perido y seccion
+    MostrarAlumnosFiltro(grado,periodo,seccion){
+      {
+        this.calificacionService.Filtrolumnos(grado,periodo,seccion).subscribe(data => {
+          this.alumnos = data;
         } ,
           err => console.error(err) )
       };
