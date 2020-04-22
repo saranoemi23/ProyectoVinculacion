@@ -92,6 +92,15 @@ export class CalificacionesComponent {
     if (!grado) {
       return alert('Seleccione un grado');
     }
+    //mostramos  los alumnos, por grado,perido y seccion
+    MostrarAlumnosFiltro(grado,periodo,seccion){
+      {
+        this.calificacionService.Filtrolumnos(grado,periodo,seccion).subscribe(data => {
+          this.alumnos = data;
+        } ,
+          err => console.error(err) )
+      };
+    }
 
     axios.post(URL + '/cargar-alumnos', {
       grado: grado,
