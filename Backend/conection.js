@@ -3,7 +3,7 @@ const mysql = require("mysql");
 var connection = mysql.createConnection({
     host: 'localhost', 
     user: 'root',
-    password: 'root',
+    password: 'rootroot',
     database: 'enecstar_matricula',
     multipleStatements: true
     // host: 'gator4113.hostgator.com', 

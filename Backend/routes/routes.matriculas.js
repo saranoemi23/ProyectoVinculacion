@@ -28,9 +28,11 @@ Router.post('/filter', (req, res) => {
 
     console.log('filtro', filtro);
 
-    const queryString = `
-        SELECT m.*, g.grado as nombre_grado FROM matricula m
-        inner join grado g on m.grado = g.idgrado
+    const queryString =  `
+    SELECT 	m.*, g.grado as nombre_grado 
+    FROM 	matricula m
+        INNER JOIN grado g ON m.grado = g.idgrado
+        LEFT JOIN requisitos r ON m.idmatricula = r.idmatricula
     ` + filtro;
     console.log(queryString, params);
 
@@ -152,6 +154,11 @@ Router.post('/add', (req, res) =>{
     const vecino = req.body.vecino
     const tel_vecino = req.body.tel_vecino
 
+    const requisito1 = req.body.requisito1
+    const requisito2 = req.body.requisito2
+    const requisito3 = req.body.requisito3
+    const requisito4 = req.body.requisito4
+
 
     const queryString = "INSERT INTO matricula (fecha_matricula, nombre_alumno, fecha_nacimiento, lugar_nacimiento, edad, identidad, tipo_sangre, alergias, enfermedades, vacunas, otros, operaciones, fracturas, dif_conducta, grado, tipo_ingreso, repitente, escuela_ant, nombre_padre, padre_id, padre_edad, padre_academ, padre_trabajo, padre_trabajo_tel, padre_tel, nombre_madre, madre_id, madre_edad, madre_academ, madre_trabajo, madre_trabajo_tel, madre_tel, responsable, direccion_resp, tel_resp, familiar, tel_familiar, amigo, tel_amigo, vecino, tel_vecino )  VALUES  (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
     connection.query(queryString, [fecha_matricula, nombre_alumno, fecha_nacimiento, lugar_nacimiento, edad, identidad, tipo_sangre, alergias, enfermedades, vacunas, otros, operaciones, fracturas, dif_conducta, grado, tipo_ingreso, repitente, escuela_ant, nombre_padre, padre_id, padre_edad, padre_academ, padre_trabajo, padre_trabajo_tel, padre_tel, nombre_madre, madre_id, madre_edad, madre_academ, madre_trabajo, madre_trabajo_tel, madre_tel, responsable, direccion_resp, tel_resp, familiar, tel_familiar, amigo, tel_amigo, vecino, tel_vecino], (err, results, fields) =>{
@@ -162,7 +169,20 @@ Router.post('/add', (req, res) =>{
         }
 
         console.log("Se agrego matricula con id: ", results.insertId);
-        res.end() 
+        const idmatricula = results.insertId;
+
+        const queryStringrequisitos = "INSERT INTO requisitos (idmatricula, requisito1, requisito2, requisito3, requisito4)  VALUES  (?,?,?,?,?)"
+        connection.query(queryStringrequisitos, [idmatricula, requisito1, requisito2, requisito3, requisito4], (err, results, fields) =>{
+            if (err){
+                console.log("Error el matricula: "+ err)
+                res.sendStatus(500)
+                return
+            }
+            console.log(results);
+            res.end();
+            
+        } )
+
         
     } )
 });
@@ -254,6 +274,11 @@ Router.put('/edit/:id', (req, res) =>{
     const vecino = req.body.vecino
     const tel_vecino = req.body.tel_vecino
 
+    const requisito1 = req.body.requisito1
+    const requisito2 = req.body.requisito2
+    const requisito3 = req.body.requisito3
+    const requisito4 = req.body.requisito4
+
     console.log(idmatricula)
     const queryString = "UPDATE matricula SET fecha_matricula = ?, nombre_alumno = ?, fecha_nacimiento = ?, lugar_nacimiento = ?, edad = ?, identidad = ?, tipo_sangre = ?, alergias = ?, enfermedades = ?, vacunas = ?, otros = ?, operaciones = ?, fracturas = ?, dif_conducta = ?, grado = ?, tipo_ingreso = ?, repitente = ?, escuela_ant = ?, nombre_padre = ?, padre_id = ?, padre_edad = ?, padre_academ = ?, padre_trabajo = ?, padre_trabajo_tel = ?, padre_tel = ?, nombre_madre = ?, madre_id = ?, madre_edad = ?, madre_academ = ?, madre_trabajo = ?, madre_trabajo_tel = ?, madre_tel = ?, responsable = ?, direccion_resp = ?, tel_resp = ?, familiar = ?, tel_familiar = ?, amigo = ?, tel_amigo = ?, vecino = ?, tel_vecino = ? WHERE idmatricula = ?"
     connection.query(queryString, [fecha_matricula, nombre_alumno, fecha_nacimiento, lugar_nacimiento, edad, identidad, tipo_sangre, alergias, enfermedades, vacunas, otros, operaciones, fracturas, dif_conducta, grado, tipo_ingreso, repitente, escuela_ant, nombre_padre, padre_id, padre_edad, padre_academ, padre_trabajo, padre_trabajo_tel, padre_tel, nombre_madre, madre_id, madre_edad, madre_academ, madre_trabajo, madre_trabajo_tel, madre_tel, responsable, direccion_resp, tel_resp, familiar, tel_familiar, amigo, tel_amigo, vecino, tel_vecino, idmatricula], (err, results, fields) =>{
@@ -264,7 +289,20 @@ Router.put('/edit/:id', (req, res) =>{
         }
 
         console.log("Se edito Matricula con id: ", results.affectedRows);
-        res.end() 
+        // res.end()
+        
+        const queryStringReq = "UPDATE requisitos SET requisito1 = ?, requisito2 = ?, requisito4 = ?, requisito4 = ? WHERE idmatricula = ?"
+        connection.query(queryStringReq, [requisito1, requisito2, requisito4, requisito4, idmatricula], (err, results, fields) =>{
+            if (err){
+                console.log("Error al editar requisitos de matricula: "+ err)
+                res.sendStatus(400)
+                return
+            }
+
+            console.log("Se edito Matricula con id: ", results.affectedRows);
+            res.end() 
+            
+        } )
         
     } )
 });
