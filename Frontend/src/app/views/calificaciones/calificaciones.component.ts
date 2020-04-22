@@ -1,85 +1,108 @@
-import { Component, OnInit } from '@angular/core';
-import { CalificacionesService } from "../../service/calificaciones.service";
-import {  calificaciones} from "../../models/calificaciones";
+import { Component } from '@angular/core';
+import axios from 'axios';
+
+const URL = 'http://localhost:3000/calificaciones';
+const URL_GRADOS = 'http://localhost:3000/grados';
+const URL_PERIODOS = 'http://localhost:3000/periodos';
+const URL_ASIGNATURAS = 'http://localhost:3000/asignaturas';
+
 
 @Component({
-  selector: 'app-calificaciones',
-  templateUrl: './calificaciones.component.html',
-  styleUrls: ['./calificaciones.component.css']
+  templateUrl: 'calificaciones.component.html'
 })
-export class CalificacionesComponent implements OnInit {
-   calificacio :calificaciones[];
-   calificacion : any=[];
-   notas :any=[];
-   alumnos :any=[];
+export class CalificacionesComponent {
 
-  constructor(private calificacionService : CalificacionesService) {
-    this.calificacion = new calificaciones();
-   }
+  // valores del form
+    idCalificaciones = 0;
+    Examen = '';
+    Acumulado = '';
+    id_asignatura = 0;
+    id_grado_detalle = 0;
+    id_alumno = 0;
+    id_periodo = 0;
+    anio = 0;
+    idmatricula = 0;
+    periodo = 0;
+    asignatura = 0;
 
+  grados = [];
+  calificaciones = [];
+  alumnos = [];
+  periodos = [];
+  asignaturas = [];
+  // grado seleccionado
+  grado = {
+    idgrado:0
+  };
 
-  ngOnInit() {
-   this.getcalificaciones();
-   
+  constructor() {
+    var fechaActual = new Date();
+    this.anio = fechaActual.getFullYear();
+
+    this.cargarDatos();
   }
 
-    getcalificaciones(){
-      this.calificacionService.getCalificaciones().subscribe(data => {
-        this.calificacio = data;
-      } ,
-        err => console.error(err) )
-    };
+  cargarDatos() {
 
-    updatecalificacion(id:number){
-      this.calificacionService.updatecalificacion(id,this.calificacion)
-      .subscribe(data =>{
-        this.calificacion=data;
-      });
+    axios.get(URL_GRADOS + '/get')
+    .then(request => {
+      this.grados = request.data; console.log(this.grados);
+    })
+
+    axios.get(URL_PERIODOS + '/get')
+    .then(request => {
+      this.periodos = request.data; console.log(this.periodos);
+    })
+
+    axios.get(URL_ASIGNATURAS + '/get')
+    .then(request => {
+      this.asignaturas = request.data; console.log(this.asignaturas);
+    })
+  }
+
+  cargarCalificaciones(){
+    let grado = this.grado.idgrado;
+    let anio = this.anio;
+    let matricula = this.idmatricula;
+    let asignatura = this.asignatura;
+    let periodo = this.periodo;
+    
+    axios.post(URL + '/get', {
+      grado: grado,
+      anio: anio,
+      matricula: matricula,
+      periodo: periodo,
+      asignatura: asignatura,
+    })
+    .then(request => {
+      this.calificaciones = request.data; console.log(this.calificaciones);
+    })
+  }
+
+  cargarAlumnos() {
+    console.log('this.grado', this.grado);
+    let grado = this.grado.idgrado;
+    let anio = this.anio;
+    console.log('cargando alumnos', this.grado);
+
+    if (!anio) {
+      return alert('Seleccione un año');
     }
 
-     
-    savecalificacion(){
-      this.calificacionService.savecalificacion(this.calificacion).subscribe(  
-      res =>{
-        this.calificacion=res;
-      },
-      err => console.error()
-      ) ;   
+    if (!grado) {
+      return alert('Seleccione un grado');
     }
 
-    deletecalificacion(id:number){
-      this.calificacionService.deletecalificacion(id).subscribe(() =>
-        {
-          this.getcalificaciones();
-        }
-      )
-    }
-    //mostramos las calificaciones de alumnos, por grado,perido y seccion
-    MostrarGradoFiltro(grado,periodo,seccion){
-      {
-        this.calificacionService.filtroGrado(grado,periodo,seccion).subscribe(data => {
-          this.notas = data;
-        } ,
-          err => console.error(err) )
-      };
-    }
-    //mostramos las calificaciones de alumnos, por grado,perido, seccion de un alumno
-    MostrarAlumnoFiltro(grado,periodo,seccion,alumno){
-      {
-        this.calificacionService. filtroAlumno(grado,periodo,seccion,alumno).subscribe(data => {
-          this.notas = data;
-        } ,
-          err => console.error(err) )
-      };
-    }
-    //mostramos  los alumnos, por grado,perido y seccion
-    MostrarAlumnosFiltro(grado,periodo,seccion){
-      {
-        this.calificacionService.Filtrolumnos(grado,periodo,seccion).subscribe(data => {
-          this.alumnos = data;
-        } ,
-          err => console.error(err) )
-      };
-    }
+    axios.post(URL + '/cargar-alumnos', {
+      grado: grado,
+      anio: anio,
+    })
+    .then(request => {
+      this.alumnos = request.data;
+      console.log('alumnos', this.alumnos);
+
+    })
+
+  }
 
 }

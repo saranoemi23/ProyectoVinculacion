@@ -43,7 +43,6 @@ export class CardsComponent {
     }
   }
 
-
   agregarNueva() {
 
     let a = this.asignatura;
