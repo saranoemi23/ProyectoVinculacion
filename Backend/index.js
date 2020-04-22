@@ -17,6 +17,7 @@ const Grado_DetalleRoutes = require("./routes/routes.grado_detalles");
 const MatriculaRoutes = require("./routes/routes.matriculas");
 const CalificacionesRoutes = require("./routes/routes.calificaciones");
 const Calificaciones2Routes = require("./routes/routes.calificaciones2");
+const Inventario_mobiliarioRotues = require("./routes/routes.inventario_mobiliario");
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.use("/grado_detalles", Grado_DetalleRoutes);
 app.use("/matriculas", MatriculaRoutes);
 app.use("/calificaciones", CalificacionesRoutes);
 app.use("/calificaciones2", Calificaciones2Routes);
+app.use("/inventario_mobiliario", Inventario_mobiliarioRotues);
 
 app.listen(3000, () =>{
     console.log('Server on port 3000');
