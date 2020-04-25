@@ -1,18 +1,16 @@
 const mysql = require("mysql");
 
-var connection = mysql.createConnection({
-    host: 'localhost', 
+const password = process.env.MATRICULA_DB_PASSWORD || 'rootroot';
+
+const options = {
+    host: 'localhost',
     user: 'root',
-    password: 'rootroot',
+    password: password,
     database: 'enecstar_matricula',
     multipleStatements: true
-    // host: 'gator4113.hostgator.com', 
-    // user: 'enecstar_matricu',
-    // password: 'Matricula123',
-    // database: 'enecstar_matricula',
-    // multipleStatements: true
-})
+};
 
+var connection = mysql.createConnection(options)
 connection.connect((err) =>{
     if(!err){
         console.log("Connected!!")
