@@ -67,7 +67,6 @@
                   </div>
                 </div>
 
-
                 <button class="btn btn-primary" (click)="cargarMatricula()">
                   Cargar Matriculas
                 </button>
@@ -83,7 +82,9 @@
 
                 <div class="row" *ngFor="let matricula of matriculas">
                   <div class="col-md-4">
-                    <p>{{matricula.nombre_alumno}}</p>
+                    <p>
+                      <a [href]="'/#/charts/' + matricula.idmatricula">
+                      {{matricula.nombre_alumno}}</a></p> 
                   </div>
                   <div class="col-md-4">
                       <p>{{matricula.nombre_grado}}</p>

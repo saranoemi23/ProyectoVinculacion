@@ -3,9 +3,10 @@ import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { CommonModule } from "@angular/common";
 import axios from 'axios';
+import { config } from '../../../config';
 
-const URL = 'http://localhost:3000/matriculas';
-const URL_GRADOS = 'http://localhost:3000/grados';
+const URL = config.backendURL() + '/matriculas';
+const URL_GRADOS = config.backendURL() + '/grados';
 
 @Component({
   templateUrl: 'dashboard.component.html',

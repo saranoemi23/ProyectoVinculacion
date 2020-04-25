@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import {  calificaciones} from "../models/calificaciones";
 import { HttpClient } from '@angular/common/http';
+import { config } from '../../config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CalificacionesService {
-  API_URI = 'http://localhost:3000/calificaciones2/'
+  API_URI = config.backendURL() + '/calificaciones2/'
 
   constructor(private http: HttpClient) { }
 

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
+import { config } from '../../../config';
 
-const URL = 'http://localhost:3000/grados';
-const URL_JORNADAS = 'http://localhost:3000/jornadas';
-const URL_SECCIONES = 'http://localhost:3000/secciones';
+const URL = config.backendURL() + '/grados';
+const URL_JORNADAS = config.backendURL() + '/jornadas';
+const URL_SECCIONES = config.backendURL() + '/secciones';
 
 @Component({
   templateUrl: 'forms.component.html'

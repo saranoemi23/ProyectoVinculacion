@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
+import { config } from '../../../config';
 
-const URL = 'http://localhost:3000/secciones';
+const URL = config.backendURL() + '/secciones';
 
 @Component({
   templateUrl: 'tabs.component.html'

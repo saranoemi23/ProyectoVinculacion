@@ -10,6 +10,13 @@ const routes: Routes = [
     data: {
       title: 'Alumnos'
     }
+  },
+  {
+    path: ':id',
+    component: ChartJSComponent,
+    data: {
+      title: 'Alumnos'
+    }
   }
 ];
 

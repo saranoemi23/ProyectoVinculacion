@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Matricula} from '../models/matricula';
+import { config } from '../../config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MatriculaService {
 
-  API_URI = 'http://localhost:3000/matriculas/'
+  API_URI = config.backendURL() + '/matriculas/'
 
   constructor(private http: HttpClient) { }
 

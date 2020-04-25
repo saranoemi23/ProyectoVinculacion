@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import axios from 'axios';
 import { NgForm, FormGroup, FormControl, Validator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { config } from '../../../config';
 
 @Component({
   selector: 'app-dashboard',
@@ -57,7 +58,7 @@ export class RegisterComponent {
  
  
      const instance = axios.create();
-   axios.post('http://localhost:3000/usuarios/add/', {
+   axios.post(config.backendURL() + '/usuarios/add/', {
  
      nombres: nombres,
      apellidos: apellidos,

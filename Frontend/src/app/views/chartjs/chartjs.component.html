@@ -634,152 +634,26 @@
                   </div>
               </div>
           </div>
-  
+          <br> <br>
+          <h2>Requisitos</h2> <br>         
+          <div class="form-group">
+            <div class="controls">
+              <div class="input-group" *ngFor="let req of requisitos">
+                <label class="col-form-label" for="appendedInput">
+                  <input name="requisito" type="checkbox"
+                  [checked]="req.checked" (change)="req.checked = !req.checked">
+                  {{req.descripcion}}
+                </label>
+                <div class="input-group-append">
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary" (click)="guardar()">Agregar</button>
+            <button type="submit" class="btn btn-primary" (click)="guardar()">Guardar</button>
           </div>
         </form>
       </div>
     </div>
 </div>
-<!--<div class="animated fadeIn">
-    <div class="row">
-      <div class="col-lg-12">
-       <div class="card">
-        <div class="card-header">
-          <i class="fa fa-align-justify"></i> Lista de Matriculas
-        </div>
-        <div class="card-body">
-            <div class="row" *ngFor="let matricula of matriculas">
-                <div class="col-md-4">
-                    <p>{{ matricula.fecha_matricula}}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.nombre_alumno }}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.fecha_nacimiento }}</p>
-                </div>
-                <div class="col-md-4">
-                    <p>{{ matricula.lugar_nacimiento}}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.edad }}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.identidad }}</p>
-                </div>
-                <div class="col-md-4">
-                    <p>{{ matricula.tipo_sangre}}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.alergias }}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.enfermedades }}</p>
-                </div>
-                <div class="col-md-4">
-                    <p>{{ matricula.vacunas}}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.otros }}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.operaciones }}</p>
-                </div>
-                <div class="col-md-4">
-                    <p>{{ matricula.fracturas}}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.dif_conducta }}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.grado }}</p>
-                </div>
-                <div class="col-md-4">
-                    <p>{{ matricula.tipo_ingreso}}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.escuela_ant}}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.nombre_padre }}</p>
-                </div>
-                <div class="col-md-4">
-                    <p>{{ matricula.padre_id}}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.padre_edad }}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.padre_academ }}</p>
-                </div>
-                <div class="col-md-4">
-                    <p>{{ matricula.padre_trabajo}}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.padre_trabajo_tel }}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.padre_tel }}</p>
-                </div>
-                <div class="col-md-4">
-                    <p>{{ matricula.nombre_madre}}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.madre_id }}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.madre_edad }}</p>
-                </div>
-                <div class="col-md-4">
-                    <p>{{ matricula.madre_academ}}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.madre_trabajo }}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.madre_trabajo_tel }}</p>
-                </div>
-                <div class="col-md-4">
-                    <p>{{ matricula.madre_tel}}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.responsable }}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.direccion_resp }}</p>
-                </div>
-                <div class="col-md-4">
-                    <p>{{ matricula.tel_resp}}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.familiar }}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.tel_familiar }}</p>
-                </div>
-                <div class="col-md-4">
-                    <p>{{ matricula.amigo}}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.tel_amigo }}</p>
-                </div>
-                <div class="col-md-4">
-                  <p>{{ matricula.vecino }}</p>
-                </div>
-                <div class="col-md-4">
-                    <p>{{ matricula.tel_vecino}}</p>
-                </div>
-                  <p>
-                      <button class="btn btn-primary" (click)="seleccionarMatricula(matricula)">Editar</button>
-                      <button class="btn btn-primary" (click)="eliminarMatricula(matricula)">Eliminar</button>
-                  </p>        
-                </div>
-            </div>
-        </div>
-      </div>
-    </div>  
-
-  </div>-->
- 

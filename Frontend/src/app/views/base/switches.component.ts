@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
+import { config } from '../../../config';
 
-const URL = 'http://localhost:3000/jornadas';
+const URL = config.backendURL() + '/jornadas';
 
 @Component({
   templateUrl: 'switches.component.html'

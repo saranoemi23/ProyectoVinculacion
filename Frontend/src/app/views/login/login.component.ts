@@ -3,6 +3,7 @@ import { NgForm, FormGroup, FormControl, Validator, Validators } from '@angular/
 import { Router } from '@angular/router';
 import { JsonPipe } from '@angular/common';
 import axios from 'axios';
+import { config } from '../../../config';
 
 @Component({
   selector: 'app-dashboard',
@@ -43,7 +44,7 @@ loginForm = new FormGroup({
 
     const instance = axios.create();
 
-    axios.get('http://localhost:3000/usuarios/get/' + username + '/' + password)
+    axios.get(config.backendURL() + '/usuarios/get/' + username + '/' + password)
     
     .then(resp => {
  

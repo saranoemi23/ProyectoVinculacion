@@ -32,7 +32,7 @@ Router.post('/filter', (req, res) => {
     SELECT 	m.*, g.grado as nombre_grado 
     FROM 	matricula m
         INNER JOIN grado g ON m.grado = g.idgrado
-        LEFT JOIN requisitos r ON m.idmatricula = r.idmatricula
+        LEFT JOIN requisitos r ON m.idmatricula = r.id
     ` + filtro;
     console.log(queryString, params);
 
@@ -53,7 +53,49 @@ Router.get('/get/:id', (req, res) => {
     console.log("Seleccionar matricula con id: "+ req.params.id)
 
     const idmatricula= req.params.id
-    const queryString = "SELECT * FROM matricula WHERE idmatricula = ?"
+    const queryString = `SELECT idmatricula,
+    DATE_FORMAT(fecha_matricula, '%Y-%m-%d') as fecha_matricula,
+    nombre_alumno,
+    DATE_FORMAT(fecha_nacimiento, '%Y-%m-%d') as fecha_nacimiento,
+    lugar_nacimiento,
+    edad,
+    identidad,
+    tipo_sangre,
+    alergias,
+    enfermedades,
+    vacunas,
+    otros,
+    operaciones,
+    fracturas,
+    dif_conducta,
+    grado,
+    tipo_ingreso,
+    repitente,
+    escuela_ant,
+    nombre_padre,
+    padre_id,
+    padre_edad,
+    padre_academ,
+    padre_trabajo,
+    padre_trabajo_tel,
+    padre_tel,
+    nombre_madre,
+    madre_id,
+    madre_edad,
+    madre_academ,
+    madre_trabajo,
+    madre_trabajo_tel,
+    madre_tel,
+    responsable,
+    direccion_resp,
+    tel_resp,
+    familiar,
+    tel_familiar,
+    amigo,
+    tel_amigo,
+    vecino,
+    tel_vecino
+    FROM matricula WHERE idmatricula = ?`
     connection.query(queryString, [idmatricula],(err, rows, fields) => {
         if(err){
             console.log("No existe matricula " + err)
@@ -66,6 +108,24 @@ Router.get('/get/:id', (req, res) => {
     })
 });
 
+Router.get('/get/:id/requisitos', (req, res) => {
+    console.log("Seleccionar requisito con id: "+ req.params.id)
+
+    const idmatricula= req.params.id
+    const queryString = `select r.id as id_requisito, r.descripcion, rd.idmatricula 
+    from requisitos r left join requisitos_detalle rd on rd.id_requisito = r.id
+    and idmatricula = ?;`
+    connection.query(queryString, [idmatricula],(err, rows, fields) => {
+        if(err){
+            console.log("No existen requisitos " + err)
+            res.sendStatus(500)
+            res.end()
+            return
+        }
+        console.log("Requisito Seleccionado")
+        res.json(rows)
+    })
+});
 
 Router.post('/add', (req, res) =>{
 
@@ -171,17 +231,7 @@ Router.post('/add', (req, res) =>{
         console.log("Se agrego matricula con id: ", results.insertId);
         const idmatricula = results.insertId;
 
-        const queryStringrequisitos = "INSERT INTO requisitos (idmatricula, requisito1, requisito2, requisito3, requisito4)  VALUES  (?,?,?,?,?)"
-        connection.query(queryStringrequisitos, [idmatricula, requisito1, requisito2, requisito3, requisito4], (err, results, fields) =>{
-            if (err){
-                console.log("Error el matricula: "+ err)
-                res.sendStatus(500)
-                return
-            }
-            console.log(results);
-            res.end();
-            
-        } )
+        guardarRequisitos(req, res, idmatricula);
 
         
     } )
@@ -230,6 +280,7 @@ Router.put('/edit/:id', (req, res) =>{
     console.log("tel_amigo: "+ req.body.tel_amigo)
     console.log("vecino: "+ req.body.vecino)
     console.log("tel_vecino: "+ req.body.tel_vecino)
+    console.log("requisitos: ", req.body.requisitos)
    
     const idmatricula = req.params.id
     const fecha_matricula = req.body.fecha_matricula
@@ -274,10 +325,6 @@ Router.put('/edit/:id', (req, res) =>{
     const vecino = req.body.vecino
     const tel_vecino = req.body.tel_vecino
 
-    const requisito1 = req.body.requisito1
-    const requisito2 = req.body.requisito2
-    const requisito3 = req.body.requisito3
-    const requisito4 = req.body.requisito4
 
     console.log(idmatricula)
     const queryString = "UPDATE matricula SET fecha_matricula = ?, nombre_alumno = ?, fecha_nacimiento = ?, lugar_nacimiento = ?, edad = ?, identidad = ?, tipo_sangre = ?, alergias = ?, enfermedades = ?, vacunas = ?, otros = ?, operaciones = ?, fracturas = ?, dif_conducta = ?, grado = ?, tipo_ingreso = ?, repitente = ?, escuela_ant = ?, nombre_padre = ?, padre_id = ?, padre_edad = ?, padre_academ = ?, padre_trabajo = ?, padre_trabajo_tel = ?, padre_tel = ?, nombre_madre = ?, madre_id = ?, madre_edad = ?, madre_academ = ?, madre_trabajo = ?, madre_trabajo_tel = ?, madre_tel = ?, responsable = ?, direccion_resp = ?, tel_resp = ?, familiar = ?, tel_familiar = ?, amigo = ?, tel_amigo = ?, vecino = ?, tel_vecino = ? WHERE idmatricula = ?"
@@ -289,23 +336,40 @@ Router.put('/edit/:id', (req, res) =>{
         }
 
         console.log("Se edito Matricula con id: ", results.affectedRows);
-        // res.end()
         
-        const queryStringReq = "UPDATE requisitos SET requisito1 = ?, requisito2 = ?, requisito4 = ?, requisito4 = ? WHERE idmatricula = ?"
-        connection.query(queryStringReq, [requisito1, requisito2, requisito4, requisito4, idmatricula], (err, results, fields) =>{
-            if (err){
-                console.log("Error al editar requisitos de matricula: "+ err)
-                res.sendStatus(400)
-                return
-            }
-
-            console.log("Se edito Matricula con id: ", results.affectedRows);
-            res.end() 
-            
-        } )
+        guardarRequisitos(req, res, idmatricula);
         
     } )
 });
+
+function guardarRequisitos(req, res, idmatricula) {
+    let requisitos = req.body.requisitos;
+
+    console.log(requisitos);
+
+    let agregar = requisitos.filter(row => row.checked);
+
+    let sqlAgregar = '';
+
+    agregar.forEach(row => {
+        sqlAgregar += `insert into requisitos_detalle(idmatricula, id_requisito) values ('${idmatricula}', '${row.id_requisito}'); \n`;
+    })
+
+    console.log(sqlAgregar);
+
+    let queryString = "delete from requisitos_detalle where idmatricula = ?;"
+    +sqlAgregar
+    connection.query(queryString, [idmatricula], (err, results, fields) =>{
+        if (err){
+            console.log("Error al editar requisitos: "+ err)
+            res.sendStatus(400)
+            return
+        }
+
+        console.log("Se editaros los requisitos para la Matricula con id: ", idmatricula);
+        res.end()
+    } )
+}
 
 Router.delete('/delete/:id', (req, res) => {
     console.log("Eliminar matricula con id: "+ req.params.id)
@@ -322,6 +386,30 @@ Router.delete('/delete/:id', (req, res) => {
         console.log("matricula Eliminado")
         res.json(rows)
     })
+});
+
+Router.put('/requisitos', (req, res) =>{
+
+    console.log("requisitos: ", req.body.requisitos)
+   
+    const requisito1 = req.body.requisito1
+    const requisito2 = req.body.requisito2
+    const requisito3 = req.body.requisito3
+    const requisito4 = req.body.requisito4
+
+    console.log(idmatricula)
+    const queryString = "UPDATE matricula SET fecha_matricula = ?, nombre_alumno = ?, fecha_nacimiento = ?, lugar_nacimiento = ?, edad = ?, identidad = ?, tipo_sangre = ?, alergias = ?, enfermedades = ?, vacunas = ?, otros = ?, operaciones = ?, fracturas = ?, dif_conducta = ?, grado = ?, tipo_ingreso = ?, repitente = ?, escuela_ant = ?, nombre_padre = ?, padre_id = ?, padre_edad = ?, padre_academ = ?, padre_trabajo = ?, padre_trabajo_tel = ?, padre_tel = ?, nombre_madre = ?, madre_id = ?, madre_edad = ?, madre_academ = ?, madre_trabajo = ?, madre_trabajo_tel = ?, madre_tel = ?, responsable = ?, direccion_resp = ?, tel_resp = ?, familiar = ?, tel_familiar = ?, amigo = ?, tel_amigo = ?, vecino = ?, tel_vecino = ? WHERE idmatricula = ?"
+    connection.query(queryString, [fecha_matricula, nombre_alumno, fecha_nacimiento, lugar_nacimiento, edad, identidad, tipo_sangre, alergias, enfermedades, vacunas, otros, operaciones, fracturas, dif_conducta, grado, tipo_ingreso, repitente, escuela_ant, nombre_padre, padre_id, padre_edad, padre_academ, padre_trabajo, padre_trabajo_tel, padre_tel, nombre_madre, madre_id, madre_edad, madre_academ, madre_trabajo, madre_trabajo_tel, madre_tel, responsable, direccion_resp, tel_resp, familiar, tel_familiar, amigo, tel_amigo, vecino, tel_vecino, idmatricula], (err, results, fields) =>{
+        if (err){
+            console.log("Error al editar matricula: "+ err)
+            res.sendStatus(400)
+            return
+        }
+
+        console.log("Se edito Matricula con id: ", results.affectedRows);
+        res.end()
+        
+    } )
 });
 
 module.exports = Router;

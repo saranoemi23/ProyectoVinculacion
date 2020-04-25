@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
+import { config } from '../../../config';
 
-const URL = 'http://localhost:3000/calificaciones';
-const URL_GRADOS = 'http://localhost:3000/grados';
-const URL_PERIODOS = 'http://localhost:3000/periodos';
-const URL_ASIGNATURAS = 'http://localhost:3000/asignaturas';
+const URL = config.backendURL() + '/calificaciones';
+const URL_GRADOS = config.backendURL() + '/grados';
+const URL_PERIODOS = config.backendURL() + '/periodos';
+const URL_ASIGNATURAS = config.backendURL() + '/asignaturas';
 
 
 @Component({
