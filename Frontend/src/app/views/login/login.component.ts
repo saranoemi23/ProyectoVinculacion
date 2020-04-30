@@ -55,7 +55,6 @@ loginForm = new FormGroup({
       if (resp.data.status == 'not found') {
         alert('Usuario/Contraseña incorrecta');
       } else if (resp.data.status == 'ok') {
-        alert('Acceso concedido.');
         this.router.navigate(['/dashboard']) 
       }
 

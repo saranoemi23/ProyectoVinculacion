@@ -3,7 +3,7 @@ import { INavData } from '@coreui/angular';
 export const navItems: INavData[] = [
   {
     title: true,
-    name: 'Administración'
+    name: 'Procesos'
   },
   {
     name: 'Escuela',
@@ -43,6 +43,42 @@ export const navItems: INavData[] = [
     ],
   },
   {
+    title: true,
+    name: 'Administracion'
+  },
+  {
+    name: 'Matricular',
+    url: '/charts',
+    icon: 'icon-folder-alt'
+  },
+  {
+    name: 'Ver Alumnos',
+    url: '/dashboard',
+    icon: 'icon-notebook'
+  },
+  {
+    name: 'Inventarios',
+    url: '/buttons',
+    icon: 'icon-notebook',
+    children: [
+      {
+        name: 'Mobiliario',
+        url: '/buttons/mobiliario',
+        icon: 'icon-layers'
+      },
+      {
+        name: 'Medicinas',
+        url: '/buttons/medicinas',
+        icon: 'icon-layers'
+      },
+      {
+        name: 'Alimentos',
+        url: '/buttons/alimentos',
+        icon: 'icon-layers'
+      }
+    ]
+  },
+  {
     name: 'Usuarios',
     url: '/buttons',
     icon: 'icon-people',
@@ -58,19 +94,5 @@ export const navItems: INavData[] = [
         icon: 'icon-layers'
       }
     ]
-  },
-  {
-    title: true,
-    name: 'Procesos'
-  },
-  {
-    name: 'Matricular',
-    url: '/charts',
-    icon: 'icon-folder-alt'
-  },
-  {
-    name: 'Ver Alumnos',
-    url: '/dashboard',
-    icon: 'icon-notebook'
   }
 ];

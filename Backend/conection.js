@@ -5,7 +5,7 @@ const password = process.env.MATRICULA_DB_PASSWORD || 'rootroot';
 const options = {
     host: 'localhost',
     user: 'root',
-    password: password,
+    password: 'root',//password,
     database: 'enecstar_matricula',
     multipleStatements: true
 };

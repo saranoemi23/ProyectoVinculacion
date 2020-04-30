@@ -72,7 +72,7 @@ import { HttpClientModule } from '@angular/common/http';
     P500Component,
     LoginComponent,
     ForgotComponent,
-    RegisterComponent,
+    RegisterComponent
   
   ],
   providers: [{

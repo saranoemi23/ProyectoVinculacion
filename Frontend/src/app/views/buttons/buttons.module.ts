@@ -2,15 +2,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
-import { ButtonsComponent } from './buttons.component';
-import { BrandButtonsComponent } from './brand-buttons.component';
 
-// Dropdowns Component
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { DropdownsComponent } from './dropdowns.component';
+
 
 // Buttons Routing
+import { ButtonsComponent } from './buttons.component';
+import { DropdownsComponent } from './dropdowns.component';
 import { ButtonsRoutingModule } from './buttons-routing.module';
+import { AlimentosComponent } from '../inventarios/alimentos/alimentos.component';
+import { MedicinasComponent } from '../inventarios/medicinas/medicinas.component';
+import { MobiliariosComponent } from '../inventarios/mobiliarios/mobiliarios.component';;
 
 // Angular
 
@@ -18,13 +19,14 @@ import { ButtonsRoutingModule } from './buttons-routing.module';
   imports: [
     CommonModule,
     ButtonsRoutingModule,
-    BsDropdownModule.forRoot(),
     FormsModule
   ],
   declarations: [
     ButtonsComponent,
     DropdownsComponent,
-    BrandButtonsComponent
+    MobiliariosComponent,
+    MedicinasComponent,
+    AlimentosComponent,
   ]
 })
 export class ButtonsModule { }
