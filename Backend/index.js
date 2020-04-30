@@ -15,9 +15,10 @@ const Asignatura_DetallesRoutes = require("./routes/routes.asignatura_detalles")
 const UsuariosRoutes = require("./routes/routes.usuarios");
 const Grado_DetalleRoutes = require("./routes/routes.grado_detalles");
 const MatriculaRoutes = require("./routes/routes.matriculas");
-const CalificacionesRoutes = require("./routes/routes.calificaciones");
-const Calificaciones2Routes = require("./routes/routes.calificaciones2");
+const CalificacionRotues = require("./routes/routes.calificacion");
 const Inventario_mobiliarioRotues = require("./routes/routes.inventario_mobiliario");
+const inventario_medicinas = require("./routes/routes.inventario_medicina");
+const inventario_alimentos = require("./routes/routes.inventario_alimentos");
 
 var app = express();
 
@@ -37,9 +38,10 @@ app.use("/asignatura_detalles", Asignatura_DetallesRoutes);
 app.use("/usuarios", UsuariosRoutes);
 app.use("/grado_detalles", Grado_DetalleRoutes);
 app.use("/matriculas", MatriculaRoutes);
-app.use("/calificaciones", CalificacionesRoutes);
-app.use("/calificaciones2", Calificaciones2Routes);
+app.use("/calificacion", CalificacionRotues);
 app.use("/inventario_mobiliario", Inventario_mobiliarioRotues);
+app.use("/inventario_medicina", inventario_medicinas);
+app.use("/inventario_alimentos", inventario_alimentos);
 
 app.listen(3001, () =>{
     console.log('Server on port 3001');

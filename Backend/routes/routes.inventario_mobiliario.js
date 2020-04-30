@@ -5,7 +5,10 @@ const connection = require("../conection");
 Router.get('/get', (req, res) => {
     console.log("Seleccionar todos los mobiliarios")
 
-    const queryString = "SELECT * FROM inventario_mobiliario"
+    const queryString = `SELECT c.descripcion,c.cantidad_inicial,c.serie,
+    e.estado,c.fecha_salida,c.cantidad_salida,
+    c.recibido,c.destino,c.Observaciones
+     FROM inventario_mobiliario c INNER JOIN estado_inv_mobiliario e on c.estado=e.idestado`
     connection.query(queryString,(err, rows, fields) => {
         if(err){
             console.log("No hay mobiliarios " + err)
@@ -23,7 +26,10 @@ Router.get('/get/:id', (req, res) => {
     console.log("Seleccionar mobiliario : "+ req.params.id)
 
     const descripcion= req.params.id
-    const queryString = "SELECT * FROM inventario_mobiliario WHERE descripcion = ?"
+    const queryString = `SELECT c.descripcion,c.cantidad_inicial,c.serie,
+    e.estado,c.fecha_salida,c.cantidad_salida,
+    c.recibido,c.destino,c.Observaciones FROM inventario_mobiliario c 
+    INNER JOIN estado_inv_mobiliario e on c.estado=e.idestado WHERE descripcion = ?`
     connection.query(queryString, [descripcion],(err, rows, fields) => {
         if(err){
             console.log("No existe jornada " + err)
