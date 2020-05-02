@@ -1,50 +1,10 @@
 import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
+  
   {
     title: true,
     name: 'Procesos'
-  },
-  {
-    name: 'Escuela',
-    url: '/base',
-    icon: 'icon-graduation',
-    children: [
-      {
-        name: 'Asignaturas',
-        url: '/base/asignaturas',
-        icon: 'icon-notebook'
-      },
-      {
-        name: 'Grados',
-        url: '/base/grados',
-        icon: 'icon-control-pause'
-      },
-      {
-        name: 'Jornadas',
-        url: '/base/jornadas',
-        icon: 'icon-hourglass  '
-      },
-      {
-        name: 'Periodos',
-        url: '/base/periodos',
-        icon: 'icon-calendar '
-      },
-      {
-        name: 'Secciones',
-        url: '/base/secciones',
-        icon: 'icon-grid'
-      },   
-      {
-        name: 'Calificaciones',
-        url: '/base/calificaciones',
-        icon: 'icon-graduation'
-      }, 
-    ],
-  },
-  {
-    title: true,
-    name: 'Administracion'
   },
   {
     name: 'Matricular',
@@ -78,6 +38,44 @@ export const navItems: INavData[] = [
       }
     ]
   },
+  
+  {
+    title: true,
+    name: 'Administración',
+  },
+  {
+    name: 'Mantenimientos',
+    url: '/base',
+    icon: 'icon-graduation',
+    children: [
+      {
+        name: 'Asignaturas',
+        url: '/base/asignaturas',
+        icon: 'icon-notebook'
+      },
+      {
+        name: 'Grados',
+        url: '/base/grados',
+        icon: 'icon-control-pause'
+      },
+      {
+        name: 'Jornadas',
+        url: '/base/jornadas',
+        icon: 'icon-hourglass  '
+      },
+      {
+        name: 'Periodos',
+        url: '/base/periodos',
+        icon: 'icon-calendar '
+      },
+      {
+        name: 'Secciones',
+        url: '/base/secciones',
+        icon: 'icon-grid'
+      },   
+    ],
+  },
+  
   {
     name: 'Usuarios',
     url: '/buttons',

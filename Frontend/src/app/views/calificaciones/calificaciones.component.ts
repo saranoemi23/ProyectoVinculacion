@@ -26,13 +26,13 @@ export class CalificacionesComponent {
     periodo = 0;
     asignatura = 0;
 
-  grados = [];
-  calificaciones = [];
-  alumnos = [];
-  periodos = [];
-  asignaturas = [];
-  // grado seleccionado
-  grado = {
+    grados = [];
+    calificaciones = [];
+    alumnos = [];
+    periodos = [];
+    asignaturas = [];
+    // grado seleccionado
+    grado = {
     idgrado:0
   };
 

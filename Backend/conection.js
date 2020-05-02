@@ -3,11 +3,11 @@ const mysql = require("mysql");
 const password = process.env.MATRICULA_DB_PASSWORD || 'rootroot';
 
 const options = {
-    host: 'localhost',
+   host: 'localhost',
     user: 'root',
-    password: 'root',//password,
+    password: password,
     database: 'enecstar_matricula',
-    multipleStatements: true
+    multipleStatements: true 
 };
 
 var connection = mysql.createConnection(options)

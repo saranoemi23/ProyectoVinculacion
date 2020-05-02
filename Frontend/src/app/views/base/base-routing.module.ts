@@ -7,7 +7,7 @@ import { SwitchesComponent } from './switches.component';
 import { TablesComponent } from './tables.component';
 import { TabsComponent } from './tabs.component';
 import { CalificacionesComponent } from '../calificaciones/calificaciones.component';
-import { CollapsesComponent } from './collapses.component';
+//import { CollapsesComponent } from './collapses.component';
 
 const routes: Routes = [
   {

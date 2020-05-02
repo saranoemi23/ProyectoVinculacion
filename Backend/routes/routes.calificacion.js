@@ -24,6 +24,7 @@ Router.get('/get', (req, res) => {
     })
 });
 
+//filtros
 Router.post('/get', (req, res) => {
     console.log("Seleccionar calificaciones segun los filtros")
 
@@ -33,7 +34,7 @@ Router.post('/get', (req, res) => {
     let asignatura = req.body.asignatura;
     let periodo = req.body.periodo;
 
-    //Definicion de filtros condicionales
+    //filtros condicionales
     var filtro_alumno= "";
     var filtro_asignatura="";
     var filtro_periodo = "";
