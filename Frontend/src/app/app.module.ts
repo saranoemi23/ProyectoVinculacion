@@ -21,8 +21,8 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { ForgotComponent } from './views/forgot/forgot.component';
 import { RegisterComponent } from './views/register/register.component';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // para el login
+import { MobiliariosComponent } from './views/inventarios/mobiliarios/mobiliarios.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -72,7 +72,8 @@ import { HttpClientModule } from '@angular/common/http';
     P500Component,
     LoginComponent,
     ForgotComponent,
-    RegisterComponent
+    RegisterComponent,
+    MobiliariosComponent
   
   ],
   providers: [{

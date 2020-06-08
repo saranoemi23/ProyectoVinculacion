@@ -46,13 +46,13 @@ export class RegisterComponent {
      var contraseñaAdmin = data.secretPassword;
 
       if (contraseñaAdmin != 'ceutec') {
-        alert('datos incorrectos');
+        alert('Datos incorrectos');
         return;
       }
 
 
      if (password != passwordRepeat) {
-       alert('contraseñas no coinciden');
+       alert('Contraseñas no coinciden');
        return;
      }
  
@@ -73,9 +73,9 @@ export class RegisterComponent {
   
      console.log(resp.data);
      //alert(resp.data);
-     if (resp.data == 'ok') {
+     if (resp.data == 'Ok') {
        
-     alert('usuario registrado con exito');
+     alert('Usuario registrado con éxito');
     this.router.navigate(['/login'])
      }     else {
      alert('error: ' + resp.data);

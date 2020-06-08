@@ -8,14 +8,14 @@ const routes: Routes = [
     path: '',
     component: ChartJSComponent,
     data: {
-      title: 'Alumnos'
+      title: 'Matricular'
     }
   },
   {
     path: ':id',
     component: ChartJSComponent,
     data: {
-      title: 'Alumnos'
+      title: 'Matricula'
     }
   }
 ];

@@ -3,14 +3,11 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Lista de calificaciones
+          <i class="fa fa-align-justify"></i> Ingresar calificaciones
         </div>
         <div>
           <div class="container">
-            <h3>Filtrar por: </h3> 
-            <p>
-              <button class="btn btn-primary" >Agregar Calificación</button>
-            </p>
+
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
@@ -59,6 +56,19 @@
                 </div>
               </div>
             </div>
+            <div class="form-group" *ngIf = "alumnos.length">
+                <label class="col-form-label" for="alumno">Alumno</label>
+                <div class="controls">
+                  <div class="input-group">
+                    <select class="form-control" id="alumno" name='idmatricula' [(ngModel)]='idmatricula'>
+                      <option value="0">Seleccione el Alumno</option>
+                      <option *ngFor="let a of alumnos" value="{{a.idmatricula}}">
+                        {{a.nombre_alumno}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+            </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
@@ -95,82 +105,54 @@
                 </div>
               </div>
             </div>
-
-
-            <!-- Mostrar lista de alumnos solo cuando selecciona ano, grado y click en el button -->
-            <div class="form-group" *ngIf = "alumnos.length">
-              <label class="col-form-label" for="alumno" >Alumno</label>
-              <div class="controls">
-                <div class="input-group">
-                  <select class="form-control" id="alumno" name='idmatricula' [(ngModel)]='idmatricula'>
-                    <option value="0">Seleccione el Alumno</option>
-                    <option *ngFor="let a of alumnos" value="{{a.idmatricula}}">
-                      {{a.nombre_alumno}}
-                    </option>
-                  </select>
+            <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-form-label" for="acumulado">Acumulado</label>
+                    <div class="controls">
+                      <div class="input-group">
+                          <input (change)="sumarTotal()" type="number" class="form-control" id="acumulado" name='acumulado' [(ngModel)]='acumulado'>
+                        <div class="input-group-append">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-form-label" for="examen">Examen</label>
+                    <div class="controls">
+                      <div class="input-group">
+                          <input (change)="sumarTotal()" type="number" class="form-control" id="examen" name='examen' [(ngModel)]='examen'>
+
+                        <div class="input-group-append">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="col-form-label" for="total">Total</label>
+                      <div class="controls">
+                        <div class="input-group">
+                            <input readonly type="text" class="form-control" id="total" name='total' [(ngModel)]='total'>
+                          <div class="input-group-append">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
               </div>
-              <br><br>
-            </div>
-            <button class="btn btn-primary" (click)="cargarCalificaciones()">
-              Cargar calificacion
+
+            <button class="btn btn-primary" (click)="guardarCalificaciones()">
+              Guardar
             </button>
-        
-        
-          </div>
-
-        <div class="card-body" >
-          <div class="row" >
-            <div class="col-md-2">
-              <b>Nombre Alumno</b>
-            </div>
-            <div class="col-md-2">
-              <b>Acumulado</b>
-            </div>
-            <div class="col-md-2">
-              <b>Examen</b>
-            </div>  
-            <div class="col-md-2">
-              <b>Total</b>
-            </div>
-            <div class="col-md-2">
-              <b>Grado</b>
-            </div>
-            <div class="col-md-2">
-              <b>Periodo</b>
-            </div>
-          </div>
-
-
-
-            <div class="row" *ngFor="let calificacion of calificaciones">
-              <div class="col-md-2">
-                <p>{{calificacion.nombre_alumno}}</p>
-              </div>
-              <div class="col-md-2">
-                <p>{{calificacion.Acumulado}}</p>
-              </div>
-              <div class="col-md-2">
-                <p>{{calificacion.Examen}}</p>
-              </div>  
-              <div class="col-md-2">
-                <p>{{calificacion.Total}}</p>
-              </div>
-              <div class="col-md-2">
-                <p>{{calificacion.grado}}</p>
-              </div>
-              <div class="col-md-2">
-                <p>{{calificacion.periodo}}</p>
-              </div>
-
-              <div class="col-md-2">
-                <p>
-                    <button class="btn btn-primary" (click)="seleccionarAsignatura(asignatura)">Editar</button>
-                    <button class="btn btn-primary" (click)="eliminarAsignatura(asignatura)">Eliminar</button>
-                </p>
-              </div>
-            </div>
         </div>
+        </div>
+        <br>
       </div>
     </div>
   </div>

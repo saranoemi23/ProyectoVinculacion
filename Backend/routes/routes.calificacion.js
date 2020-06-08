@@ -146,8 +146,7 @@ Router.post('/add', (req, res) =>{
     console.log("id_alumno: " + req.body.id_alumno)
     console.log("id_periodo: " + req.body.id_periodo)
     console.log("anio: " + req.body.anio) 
-   
-    const idCalificaciones = idCalificaciones
+
     const Acumulado = req.body.Acumulado
     const Examen = req.body.Examen
     const Total = req.body.Total
@@ -155,9 +154,19 @@ Router.post('/add', (req, res) =>{
     const id_alumno = req.body.id_alumno
     const id_periodo = req.body.id_periodo
     const anio = req.body.anio
+    const id_grado = req.body.id_grado
 
-    const queryString = "INSERT INTO asignatura ('idCalificaciones','Acumulado','Examen','id_asignatura','id_grado_detalle','id_alumno','id_periodo','anio')  VALUES  (?,?,?,?,?,?,?,?)"
-    connection.query(queryString, [idCalificaciones,Acumulado,Examen,id_asignatura,id_asignatura,id_alumno,id_periodo,anio], (err, results, fields) =>{
+    const queryString = `INSERT INTO calificaciones
+                            (Acumulado,
+                            Examen,
+                            id_asignatura,
+                            id_grado,
+                            id_alumno,
+                            id_periodo,
+                            anio)
+                            VALUES
+                            (?,?,?,?,?,?,?);`
+    connection.query(queryString, [Acumulado, Examen, id_asignatura, id_grado, id_alumno, id_periodo, anio], (err, results, fields) =>{
         if (err){
             console.log("Error el calificacion: "+ err)
             res.sendStatus(500)

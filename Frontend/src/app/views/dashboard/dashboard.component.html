@@ -15,20 +15,15 @@
                     <input id="filtrarNombre" type="checkbox" name="filtrarNombre" [(ngModel)]='filtrarNombre'>
                     <label class="col-form-label" for="filtrarNombre">Nombre</label>
                   </div>
-
                   <div class="form-group col-sm-2">
                     <input id="filtrarGrado" type="checkbox" name="filtrarGrado" [(ngModel)]='filtrarGrado'>
                     <label class="col-form-label" for="filtrarGrado">Grado</label>
                   </div>
-                  
-                  <div class="form-group col-sm-2">
+                  <!-- <div class="form-group col-sm-2">
                     <input id="filtrarEdad" type="checkbox" name="filtrarEdad" [(ngModel)]='filtrarEdad'>
                     <label class="col-form-label" for="filtrarEdad">Edad</label>
-                  </div>
-
+                  </div> -->
                 </div>
-
-
                 <div class="form-group" *ngIf="filtrarNombre">
                   <label class="col-form-label" for="nombre">Nombre Alumno</label>
                   <div class="controls">
@@ -56,7 +51,7 @@
                   </div>
                 </div>
 
-                <div class="form-group" *ngIf="filtrarEdad">
+                <!-- <div class="form-group" *ngIf="filtrarEdad">
                   <label class="col-form-label" for="edad">Edad Alumno</label>
                   <div class="controls">
                     <div class="input-prepend input-group">
@@ -65,7 +60,7 @@
                       <input id="edad" name='edad' [(ngModel)]='edad' class="form-control" size="16" type="number">
                     </div>
                   </div>
-                </div>
+                </div> -->
 
                 <button class="btn btn-primary" (click)="cargarMatricula()">
                   Cargar Matriculas

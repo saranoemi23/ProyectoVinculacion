@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
 import { config } from '../../../config';
+import { NullTemplateVisitor } from '@angular/compiler';
 
 const URL = config.backendURL() + '/calificacion';
 const URL_GRADOS = config.backendURL() + '/grados';
@@ -9,9 +10,9 @@ const URL_ASIGNATURAS = config.backendURL() + '/asignaturas';
 
 
 @Component({
-  templateUrl: 'calificaciones.component.html'
+  templateUrl: 'editar_calificaciones.component.html'
 })
-export class CalificacionesComponent {
+export class EditarCalificacionesComponent {
 
   // valores del form
     idCalificaciones = 0;
@@ -32,9 +33,10 @@ export class CalificacionesComponent {
     periodos = [];
     asignaturas = [];
     // grado seleccionado
-    grado = {
-    idgrado:0
-  };
+    grado = { idgrado: 0 };
+    acumulado='';
+    examen = '';
+    total = 0;
 
   constructor() {
     var fechaActual = new Date();
@@ -61,23 +63,30 @@ export class CalificacionesComponent {
     })
   }
 
-  cargarCalificaciones(){
-    let grado = this.grado.idgrado;
+  guardarCalificaciones(){
+    let Acumulado = this.acumulado;
+    let Examen = this.examen;
+    let Total = this.total;
+    let id_asignatura = this.asignatura;
+    let id_grado = this.grado.idgrado;
+    let id_alumno = this.idmatricula;
+    let id_periodo = this.periodo;
     let anio = this.anio;
-    let matricula = this.idmatricula;
-    let asignatura = this.asignatura;
-    let periodo = this.periodo;
     
-    axios.post(URL + '/get', {
-      grado: grado,
-      anio: anio,
-      matricula: matricula,
-      periodo: periodo,
-      asignatura: asignatura,
+    axios.post(URL + '/add', {
+      Acumulado,
+      Examen,
+      Total,
+      id_asignatura,
+      id_grado,
+      id_alumno,
+      id_periodo,
+      anio
     })
     .then(request => {
       this.calificaciones = request.data; console.log(this.calificaciones);
     })
+    this.limpiarForm();
   }
 
   cargarAlumnos() {
@@ -103,6 +112,25 @@ export class CalificacionesComponent {
       console.log('alumnos', this.alumnos);
 
     })
+
+  }
+
+  sumarTotal(){
+    this.total = parseFloat(this.acumulado || "0") + parseFloat(this.examen || "0");
+    
+  }
+
+  limpiarForm(){
+    this.idCalificaciones = 0;
+    this.examen = '';
+    this.acumulado = '';
+    this.asignatura = 0;
+    this.grado.idgrado = 0;
+    this.id_alumno = 0;
+    this.id_periodo = 0;
+    this.idmatricula = 0;
+    this.periodo = 0;
+    this.asignatura = 0;
 
   }
 

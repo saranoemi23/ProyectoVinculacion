@@ -7,13 +7,14 @@ import { SwitchesComponent } from './switches.component';
 import { TablesComponent } from './tables.component';
 import { TabsComponent } from './tabs.component';
 import { CalificacionesComponent } from '../calificaciones/calificaciones.component';
+import { EditarCalificacionesComponent } from '../calificaciones/editar_calificaciones.component';
 //import { CollapsesComponent } from './collapses.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '', 
     data: {
-      title: 'Academica'
+      title: 'Calificaciones'
     },
     children: [
       {
@@ -59,8 +60,22 @@ const routes: Routes = [
         path: 'calificaciones',
         component: CalificacionesComponent,
         data: {
-          title: 'calificaciones'
-        }
+          title: 'Calificaciones'
+        },
+      },
+      {
+        path: 'editarcalificaciones',
+        component: EditarCalificacionesComponent,
+        data: {
+          title: 'Editar Calificaciones'
+        },  
+      },
+      {
+        path: 'agregarcalificaciones',
+        component: EditarCalificacionesComponent,
+        data: {
+          title: 'Agregar Calificación'
+        },  
       },
     ]
   }

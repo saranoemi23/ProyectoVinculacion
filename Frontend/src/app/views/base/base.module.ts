@@ -24,6 +24,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
+import { EditarCalificacionesComponent } from '../calificaciones/editar_calificaciones.component';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { BaseRoutingModule } from './base-routing.module';
     SwitchesComponent,
     TablesComponent,
     TabsComponent,
-    CalificacionesComponent
+    CalificacionesComponent,
+    EditarCalificacionesComponent
   ]
 })
 export class BaseModule { }

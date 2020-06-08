@@ -17,25 +17,35 @@ export const navItems: INavData[] = [
     icon: 'icon-notebook'
   },
   {
+    name: 'Agregar Calificación',
+    url: '/base/agregarcalificaciones',
+    icon: 'icon-folder-alt'
+  },
+  {
+    name: 'Ver Calificaciones',
+    url: '/base/calificaciones',
+    icon: 'icon-folder-alt'
+  },
+  {
     name: 'Inventarios',
     url: '/buttons',
     icon: 'icon-notebook',
     children: [
       {
         name: 'Mobiliario',
-        url: '/buttons/mobiliario',
+        url: '/mobiliario',
         icon: 'icon-layers'
       },
-      {
-        name: 'Medicinas',
-        url: '/buttons/medicinas',
-        icon: 'icon-layers'
-      },
-      {
-        name: 'Alimentos',
-        url: '/buttons/alimentos',
-        icon: 'icon-layers'
-      }
+      // {
+      //   name: 'Medicinas',
+      //   url: '/buttons/medicinas',
+      //   icon: 'icon-layers'
+      // },
+      // {
+      //   name: 'Alimentos',
+      //   url: '/buttons/alimentos',
+      //   icon: 'icon-layers'
+      // }
     ]
   },
   
