@@ -22,7 +22,6 @@ import { LoginComponent } from './views/login/login.component';
 import { ForgotComponent } from './views/forgot/forgot.component';
 import { RegisterComponent } from './views/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // para el login
-import { MobiliariosComponent } from './views/inventarios/mobiliarios/mobiliarios.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -43,8 +42,8 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
-import { DashboardModule } from './views/dashboard/dashboard.module';
 import { HttpClientModule } from '@angular/common/http';
+import { InventariosModule } from './views/inventarios/inventarios.module';
 
 
 @NgModule({
@@ -61,6 +60,7 @@ import { HttpClientModule } from '@angular/common/http';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
+    InventariosModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
@@ -73,7 +73,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     ForgotComponent,
     RegisterComponent,
-    MobiliariosComponent
+    // MobiliariosComponent
   
   ],
   providers: [{

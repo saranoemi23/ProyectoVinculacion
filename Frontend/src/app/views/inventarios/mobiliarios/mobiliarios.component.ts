@@ -5,7 +5,7 @@ import { config } from '../../../../config';
 const URL = config.backendURL() + '/inventario_mobiliario';
 
 @Component({
-  templateUrl: '/mobiliarios.component.html',
+  templateUrl: './mobiliarios.component.html',
 })
 export class MobiliariosComponent {
  
@@ -23,6 +23,8 @@ export class MobiliariosComponent {
   destino='';
   observaciones='';
   idbodega=0;
+  Entrada=true;
+  Salida=false;
   
   mobiliarios=[];
 
@@ -66,8 +68,12 @@ export class MobiliariosComponent {
     let observaciones = this.observaciones;
     let idbodega = this.idbodega;
     
-    if (descripcion==''){
+    if (!descripcion){
       alert("Ingrese una descripción.")
+      return
+    }
+    if (!idestado){
+      alert("Ingrese estado del mobiliario.")
       return
     }
     // if (fecha_salida==''){
@@ -91,15 +97,14 @@ export class MobiliariosComponent {
                   observaciones: observaciones,
                   idbodega: idbodega,
     }
-
+    
     if (id) {
       axios.post(URL + "/edit/" + id, datos) 
-      .then(() => this.cargarDatos())
+      .then(() => this.registroGuardado())
         } else {
       axios.post(URL + "/add", datos)
-      .then(() => this.cargarDatos())
+      .then(() => this.registroGuardado())
     }
-    this.nuevo();
   }
 
   nuevo(){
@@ -116,7 +121,12 @@ export class MobiliariosComponent {
     this.idbodega=0;
     this.fecha_entrada='';
 
+  }
 
+  registroGuardado(){
+    this.nuevo();
+    this.cargarDatos();
+    alert('Registro guardado exitosamente');
   }
 
 }

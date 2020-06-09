@@ -9,9 +9,6 @@ import { NgModule } from '@angular/core';
 import { ButtonsComponent } from './buttons.component';
 import { DropdownsComponent } from './dropdowns.component';
 import { ButtonsRoutingModule } from './buttons-routing.module';
-import { AlimentosComponent } from '../inventarios/alimentos/alimentos.component';
-import { MedicinasComponent } from '../inventarios/medicinas/medicinas.component';
-import { MobiliariosComponent } from '../inventarios/mobiliarios/mobiliarios.component';;
 
 // Angular
 
@@ -24,9 +21,6 @@ import { MobiliariosComponent } from '../inventarios/mobiliarios/mobiliarios.com
   declarations: [
     ButtonsComponent,
     DropdownsComponent,
-    MobiliariosComponent,
-    MedicinasComponent,
-    AlimentosComponent,
   ]
 })
 export class ButtonsModule { }

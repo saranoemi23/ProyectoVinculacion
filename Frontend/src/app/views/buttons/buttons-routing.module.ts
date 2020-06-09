@@ -3,9 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ButtonsComponent } from './buttons.component';
 import { DropdownsComponent } from './dropdowns.component';
-import { MobiliariosComponent } from '../inventarios/mobiliarios/mobiliarios.component';
-import { MedicinasComponent } from '../inventarios/medicinas/medicinas.component';
-import { AlimentosComponent } from '../inventarios/alimentos/alimentos.component';
 
 const routes: Routes = [
   {
@@ -43,27 +40,6 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'dashboard'
-      },
-      {
-        path: 'mobiliario',
-        component: MobiliariosComponent,
-        data: {
-          title: 'mobiliario'
-        }
-      },
-      {
-        path: 'medicinas',
-        component: MedicinasComponent,
-        data: {
-          title: 'medicinas'
-        }
-      },
-      {
-        path: 'alimentos',
-        component: AlimentosComponent,
-        data: {
-          title: 'alimentos'
-        }
       },
     ],
   },

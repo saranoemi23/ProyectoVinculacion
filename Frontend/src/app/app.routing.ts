@@ -9,8 +9,6 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { ForgotComponent } from './views/forgot/forgot.component';
 import { RegisterComponent } from './views/register/register.component';
-import { MobiliariosComponent } from './views/inventarios/mobiliarios/mobiliarios.component';
-
 
 export const routes: Routes = [
   {
@@ -53,13 +51,6 @@ export const routes: Routes = [
       title: 'Registrar Cuenta'
     }
   },
-  {
-    path: 'mobiliario',
-    component: MobiliariosComponent,
-    data: {
-      title: 'Inventario de Mobiliario'
-    }
-  },
   
   {
     path: '',
@@ -84,6 +75,14 @@ export const routes: Routes = [
         path: 'dashboard',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
+      {
+        path: 'inventario',
+        loadChildren: () => import('./views/inventarios/inventarios.module').then(m => m.InventariosModule),
+        data: {
+          title: 'Inventario de Mobiliario'
+        }
+      },
+      
     ]
   },
   { path: '**', component: P404Component }

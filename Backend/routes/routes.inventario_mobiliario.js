@@ -37,17 +37,23 @@ Router.post('/add', (req, res) =>{
     console.log("idbodega: "+ req.body.idbodega)
    
     const cantidad_inicial = req.body.cantidad_inicial
-    const fecha_entrada = req.body.fecha_entrada
+    let fecha_entrada = req.body.fecha_entrada
     const descripcion = req.body.descripcion
     const serie = req.body.serie
     const idestado = req.body.idestado
-    const fecha_salida = req.body.fecha_salida
+    let fecha_salida = req.body.fecha_salida
     const cantidad_salida = req.body.cantidad_salida
     const recibido = req.body.recibido
     const destino = req.body.destino
     const observaciones = req.body.observaciones
     const idbodega = req.body.idbodega
 
+    if (fecha_entrada == '') {
+        fecha_entrada = null
+    } 
+    if (fecha_salida == '') {
+        fecha_salida = null
+    } 
     const queryString = `INSERT INTO enecstar_matricula.inventario_mobiliario
                                     (cantidad_inicial, fecha_entrada, descripcion, serie, idestado, 
                                     fecha_salida, cantidad_salida, recibido, destino, 
