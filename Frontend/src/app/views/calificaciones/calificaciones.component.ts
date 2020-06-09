@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
 import { config } from '../../../config';
+import { CalificacionesService } from "../../service/calificaciones.service";
 
 const URL = config.backendURL() + '/calificacion';
 const URL_GRADOS = config.backendURL() + '/grados';
@@ -36,7 +37,7 @@ export class CalificacionesComponent {
     idgrado:0
   };
 
-  constructor() {
+  constructor(private serviceCalif:CalificacionesService) {
     var fechaActual = new Date();
     this.anio = fechaActual.getFullYear();
 
@@ -105,5 +106,10 @@ export class CalificacionesComponent {
     })
 
   }
+
+  // metodo para exportar
+    ExportData():void{
+      this.serviceCalif.exportToExcel(this.calificaciones,'Descarga') ;
+    }
 
 }
