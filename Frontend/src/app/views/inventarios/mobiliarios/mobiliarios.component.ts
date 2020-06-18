@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
 import { config } from '../../../../config';
+import { DatePipe } from '@angular/common';
 
 const URL = config.backendURL() + '/inventario_mobiliario';
 
@@ -28,7 +29,8 @@ export class MobiliariosComponent {
   
   mobiliarios=[];
 
-  constructor() { 
+  constructor(private datePipe: DatePipe) { 
+    this.nuevo();
     this.cargarDatos();
   }
 
@@ -40,6 +42,7 @@ export class MobiliariosComponent {
   }
   
   editarDatos(mobiliarios){
+    console.log(mobiliarios);
     this.id=mobiliarios.id;
     this.cantidad_inicial=mobiliarios.cantidad_inicial;
     this.fecha_entrada=mobiliarios.fecha_entrada;
@@ -76,12 +79,14 @@ export class MobiliariosComponent {
       alert("Ingrese estado del mobiliario.")
       return
     }
-    // if (fecha_salida==''){
-    //   this.fecha_salida=''
-    // }
-    // if (cantidad_salida==0){
-    //   this.cantidad_salida=0
-    // }
+    if (!idbodega){
+      alert("Ingrese la bodega.")
+      return
+    }
+    if (cantidad_salida > cantidad_inicial){
+      alert("Las salidas no pueden ser mayor que las entradas.")
+      return
+    }
 
     let datos = {
                   id: id,
@@ -108,6 +113,8 @@ export class MobiliariosComponent {
   }
 
   nuevo(){
+    let hoy = this.datePipe.transform(Date.now(),'yyyy-MM-dd');
+
     this.id=0;
     this.cantidad_inicial=0;
     this.descripcion='';
@@ -119,7 +126,7 @@ export class MobiliariosComponent {
     this.destino='';
     this.observaciones='';
     this.idbodega=0;
-    this.fecha_entrada='';
+    this.fecha_entrada=hoy;
 
   }
 
@@ -129,4 +136,20 @@ export class MobiliariosComponent {
     alert('Registro guardado exitosamente');
   }
 
+  eliminar(mobiliarios){
+    var respuesta = confirm("Desea eliminar éste registro")
+    var id=mobiliarios.id;
+    if (!respuesta) return;
+
+    console.log(mobiliarios.id);
+    
+    axios.delete(URL + "/delete/" + id) 
+    .then(() => this.cargarDatos())
+  }
+  
+  seleccionarRegistro(descripcion){
+
+    let registro = this.mobiliarios.find(row => row.descripcion == descripcion);
+    this.editarDatos(registro);
+  }
 }

@@ -60,26 +60,6 @@ export class CalificacionesComponent {
       this.asignaturas = request.data; console.log(this.asignaturas);
     })
   }
-
-  cargarCalificaciones(){
-    let grado = this.grado.idgrado;
-    let anio = this.anio;
-    let matricula = this.idmatricula;
-    let asignatura = this.asignatura;
-    let periodo = this.periodo;
-    
-    axios.post(URL + '/get', {
-      grado: grado,
-      anio: anio,
-      matricula: matricula,
-      periodo: periodo,
-      asignatura: asignatura,
-    })
-    .then(request => {
-      this.calificaciones = request.data; console.log(this.calificaciones);
-    })
-  }
-
   cargarAlumnos() {
     console.log('this.grado', this.grado);
     let grado = this.grado.idgrado;
@@ -104,6 +84,38 @@ export class CalificacionesComponent {
 
     })
 
+  }
+  cargarCalificaciones(){
+    let grado = this.grado.idgrado;
+    let anio = this.anio;
+    let matricula = this.idmatricula;
+    let asignatura = this.asignatura;
+    let periodo = this.periodo;
+
+    if (!grado){
+      alert("Seleccione el grado.")
+      return
+    }
+    
+    axios.post(URL + '/get', {
+      grado: grado,
+      anio: anio,
+      matricula: matricula,
+      periodo: periodo,
+      asignatura: asignatura,
+    })
+    .then(request => {
+      this.calificaciones = request.data; console.log(this.calificaciones);
+    })
+  }
+
+  eliminar(calificaciones){
+    var respuesta = confirm("Desea eliminar éste registro")
+    var id=calificaciones.id;
+    if (!respuesta) return;
+
+    axios.delete(URL + "/delete/" + id) 
+    .then(() => this.cargarDatos())
   }
 
 }

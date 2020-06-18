@@ -6,11 +6,12 @@ Router.get('/get', (req, res) => {
     console.log("Seleccionar todas las calificaciones")
 
     const queryString = `
-    select c.Acumulado, c.Examen, c.Total, a.nombrec, g.grado, p.periodo
+    select c.Acumulado, c.Examen, c.Total, a.nombrec, g.grado, p.periodo, s.descripcion
     from calificaciones c 
     inner join alumno a on c.id_alumno = a.idalumno
     inner join grado g on g.idgrado = c.id_grado
-    inner join periodo p on p.idperiodo = c.id_periodo;
+    inner join periodo p on p.idperiodo = c.id_periodo
+    inner join asignatura s on c.id_asignatura = s.idasignatura;
     `
     connection.query(queryString,(err, rows, fields) => {
         if(err){
@@ -219,11 +220,11 @@ Router.put('/edit/:id', (req, res) =>{
 Router.delete('/delete/:id', (req, res) => {
     console.log("Eliminar calificacion con id: "+ req.params.id)
 
-    const idasignatura = req.params.id
+    const idCalificaciones = req.params.id
     const queryString = "DELETE FROM calificaciones WHERE idCalificaciones =?"
     connection.query(queryString, [idCalificaciones],(err, rows, fields) => {
         if(err){
-            console.log("No existe calificacion " + err)
+            console.log("No existe calificación " + err)
             res.sendStatus(500)
             res.end()
             return

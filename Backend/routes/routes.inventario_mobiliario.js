@@ -5,8 +5,8 @@ const connection = require("../conection");
 Router.get('/get', (req, res) => {
     console.log("Seleccionar todos los mobiliarios")
 
-    const queryString = `SELECT c.cantidad_inicial, c.fecha_entrada, c.descripcion, c.serie,
-                                e.estado, c.fecha_salida, c.cantidad_salida,
+    const queryString = `SELECT c.id, c.cantidad_inicial, DATE_FORMAT(c.fecha_entrada, "%Y-%m-%d") as fecha_entrada, c.descripcion, c.serie,
+                                e.estado, DATE_FORMAT(c.fecha_salida, "%Y-%m-%d") as fecha_salida, c.cantidad_salida,
                                 c.recibido, c.total_existencia, c.destino, c.observaciones, c.idbodega
                         FROM    inventario_mobiliario c INNER JOIN estadomobiliario e on c.idestado=e.idestado`
     connection.query(queryString,(err, rows, fields) => {
@@ -74,7 +74,6 @@ Router.post('/add', (req, res) =>{
 });
 
 Router.post('/edit/:id', (req, res) =>{
-    const connection = req.app.get('connection');
 
     console.log("Tratando de agregar mobiliario..")
     console.log("id: "+ req.body.id)
@@ -90,6 +89,7 @@ Router.post('/edit/:id', (req, res) =>{
     console.log("observaciones: "+ req.body.observaciones)
     console.log("idbodega: "+ req.body.idbodega)
    
+    const id = req.body.id;
     const cantidad_inicial = req.body.cantidad_inicial
     const fecha_entrada = req.body.fecha_entrada
     const descripcion = req.body.descripcion
@@ -104,9 +104,9 @@ Router.post('/edit/:id', (req, res) =>{
 
     console.log(id)
     const queryString = `UPDATE enecstar_matricula.inventario_mobiliario
-                         SET    cantidad_inicial = ?, fecha_entrada =? descripcion = ?, serie = ?,
+                         SET    cantidad_inicial = ?, fecha_entrada =?, descripcion = ?, serie = ?,
                                 idestado = ?, fecha_salida = ?, cantidad_salida = ?, recibido = ?, 
-                                destino = ?, observaciones = ?, idbodega = ?, 
+                                destino = ?, observaciones = ?, idbodega = ?
                         WHERE id = ?`
       
     connection.query(queryString, [cantidad_inicial,fecha_entrada, descripcion,serie,idestado,fecha_salida,cantidad_salida,recibido,destino,observaciones,idbodega,id], (err, results, fields) =>{
@@ -123,18 +123,20 @@ Router.post('/edit/:id', (req, res) =>{
 });
 
 Router.delete('/delete/:id', (req, res) => {
-    console.log("Eliminar mobiliario con id: "+ req.params.id) 
+    const connection = req.app.get('connection');
 
-    const idInventario = req.params.id
-    const queryString = "DELETE FROM inventario_mobiliario  WHERE id =?"
-    connection.query(queryString, [idInventario],(err, rows, fields) => {
+    console.log("Eliminar la mobiliario con id: "+ req.params.id)
+
+    const id = req.params.id
+    const queryString = "delete from inventario_mobiliario where id =?"
+    connection.query(queryString, [id],(err, rows, fields) => {
         if(err){
             console.log("No existe mobiliario " + err)
             res.sendStatus(500)
             res.end()
             return
         }
-        console.log("Mobiliario Eliminado")
+        console.log("Mobiliario Eliminada")
         res.json(rows)
     })
 });

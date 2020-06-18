@@ -73,7 +73,7 @@ export class RegisterComponent {
   
      console.log(resp.data);
      //alert(resp.data);
-     if (resp.data == 'Ok') {
+     if (resp.data == 'Se registró correctamente.') {
        
      alert('Usuario registrado con éxito');
     this.router.navigate(['/login'])

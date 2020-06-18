@@ -139,10 +139,10 @@
             <div class="col-md-2">
               <b>Periodo</b>
             </div>
+            <!-- <div class="col-md-2">
+              <b>Asignatura</b>
+            </div> -->
           </div>
-
-
-
             <div class="row" *ngFor="let calificacion of calificaciones">
               <div class="col-md-2">
                 <p>{{calificacion.nombre_alumno}}</p>
@@ -162,7 +162,9 @@
               <div class="col-md-2">
                 <p>{{calificacion.periodo}}</p>
               </div>
-
+              <!-- <div class="col-md-2">
+                <p>{{calificacion.descripcion}}</p>
+              </div> -->
               <div class="col-md-2">
                 <p>
                     <button class="btn btn-primary" (click)="seleccionarAsignatura(asignatura)">Editar</button>

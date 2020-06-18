@@ -7,33 +7,47 @@ export const navItems: INavData[] = [
     name: 'Procesos'
   },
   {
-    name: 'Matricular',
-    url: '/charts',
-    icon: 'icon-folder-alt'
+    name: 'Matricula',
+    // url: '/charts',
+    // icon: 'icon-folder-alt',
+    children: [
+      {
+        name: 'Matricular',
+        url: '/charts',
+        icon: 'icon-folder-alt'
+      },
+      {
+        name: 'Ver Alumnos',
+        url: '/dashboard',
+        icon: 'icon-people'
+      },
+    ]
   },
   {
-    name: 'Ver Alumnos',
-    url: '/dashboard',
-    icon: 'icon-notebook'
-  },
-  {
-    name: 'Agregar Calificación',
-    url: '/base/agregarcalificaciones',
-    icon: 'icon-folder-alt'
-  },
-  {
-    name: 'Ver Calificaciones',
-    url: '/base/calificaciones',
-    icon: 'icon-folder-alt'
+    name: 'Calificaciones',
+    // url: '/charts',
+    // icon: 'icon-folder-alt',
+    children: [
+      {
+        name: 'Agregar Calificación',
+        url: '/base/agregarcalificaciones',
+        icon: 'icon-check'
+      },
+      {
+        name: 'Ver Calificaciones',
+        url: '/base/calificaciones',
+        icon: 'icon-notebook'
+      },
+    ]
   },
   {
     name: 'Inventarios',
-    url: '/buttons',
-    icon: 'icon-notebook',
+    // url: '/buttons',
+    // icon: 'icon-folder',
     children: [
       {
         name: 'Mobiliario',
-        url: '/mobiliario',
+        url: '/inventario/mobiliario',
         icon: 'icon-layers'
       },
       // {
@@ -56,7 +70,7 @@ export const navItems: INavData[] = [
   {
     name: 'Mantenimientos',
     url: '/base',
-    icon: 'icon-graduation',
+    icon: 'icon-settings',
     children: [
       {
         name: 'Asignaturas',

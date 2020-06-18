@@ -5,309 +5,293 @@
           <div class="card-header">
             <i class="fa fa-edit"></i> Inventario de mobiliario
           </div>
-          <div>
-            <div class="container">
-              <h3>Filtrar por: </h3> 
-              <p>
-                <button  class="btn btn-outline-info" (click)="Entrada = !Entrada"
-                        [attr.aria-expanded]="!Entrada" aria-controls="collapseExample">Ingresar entrada
-                </button>
-              </p>
-              <div id="collapseExample" *ngIf="Entrada">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios"></label>
-                          <div class="controls"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios">Fecha entrada</label>
-                            <div class="controls">
-                              <div class="input-group">
-                                <input type="date" class="form-control" [(ngModel)]="fecha_entrada">     
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios">Cantidad entrada</label>
-                            <div class="controls">
-                              <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="cantidad_inicial">     
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios">Descripción</label>
-                            <div class="controls">
-                              <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="descripcion">     
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios">Serie</label>
-                            <div class="controls">
-                              <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="serie">     
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios">Estado</label>
-                            <div class="controls">
-                              <div class="input-group">
-                                <select class="form-control" [(ngModel)]="idestado">
-                                  <option value="">Ninguno</option>
-                                  <option value="B">Bueno</option>
-                                  <option value="R">Reparar</option>
-                                  <option value="M">Malo</option>
-                                </select>   
-                              </div>
-                            </div>
-                        </div>
-                      </div>  
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios">Recibido</label>
-                            <div class="controls">
-                              <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="recibido">     
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios">Destino/Actividad</label>
-                            <div class="controls">
-                              <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="destino">     
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios">Observaciones</label>
-                            <div class="controls">
-                              <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="observaciones">     
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                    </div> 
-                    <div class="row">
-                        <div class="col-md-3">
-                          <div class="form-group">
-                            <label class="col-form-label" for="mobiliarios">Bodega</label>
-                              <div class="controls">
-                                <div class="input-group">
-                                  <input type="text" class="form-control" [(ngModel)]="idbodega">     
-                                </div>
-                              </div>
-                          </div>
-                        </div> 
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <p>
-                <button  class="btn btn-outline-info" (click)="Salida = !Salida"
-                        [attr.aria-expanded]="!Salida" aria-controls="collapseExample">
-                  Ingresar salida
-                </button>
-              </p>
-              <div id="collapseExample" *ngIf="Salida">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios"></label>
-                          <div class="controls"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios">Fecha salida</label>
-                            <div class="controls">
-                              <div class="input-group">
-                                <input type="date" class="form-control" [(ngModel)]="fecha_salida">     
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios">Cantidad salida</label>
-                            <div class="controls">
-                              <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="cantidad_salida">     
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios">Descripción</label>
-                            <div class="controls">
-                              <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="descripcion">     
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios">Serie</label>
-                            <div class="controls">
-                              <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="serie">     
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios">Estado</label>
-                            <div class="controls">
-                              <div class="input-group">
-                                <select class="form-control" [(ngModel)]="idestado">
-                                  <option value="">Ninguno</option>
-                                  <option value="B">Bueno</option>
-                                  <option value="R">Reparar</option>
-                                  <option value="M">Malo</option>
-                                </select>
-                              </div>
-                            </div>
-                        </div>
-                      </div>  
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios">Recibido</label>
-                            <div class="controls">
-                              <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="recibido">     
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios">Destino/Actividad</label>
-                            <div class="controls">
-                              <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="destino">     
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="col-form-label" for="mobiliarios">Observaciones</label>
-                            <div class="controls">
-                              <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="observaciones">     
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                    </div> 
-                    <div class="row">
-                        <div class="col-md-3">
-                          <div class="form-group">
-                            <label class="col-form-label" for="mobiliarios">Bodega</label>
-                              <div class="controls">
-                                <div class="input-group">
-                                  <input type="text" class="form-control" [(ngModel)]="idbodega">     
-                                </div>
-                              </div>
-                          </div>
-                        </div> 
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button class="btn btn-primary" (click)="guardarDatos()">
-                Guardar registros
-              </button>
-              <br>
-          </div>
-          <br>
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card">
-            <div class="card-header">
-              Lista de mobiliario
-            </div> 
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-striped">
                   <thead>
                     <tr>
+                      <th scope="col" rowspan="2"></th>
+                      <th scope="col" rowspan="2">Serie</th>
+                      <th scope="col" rowspan="2">Descripción</th>
+
+                      <th colspan="3" class="border-left">Entradas</th>
+                      <th colspan="3" class="border-right border-left">Salidas</th>
+
+                      <th scope="col" rowspan="2">Estado</th>
+                      <th scope="col" rowspan="2">Existencia</th>
+                      <th scope="col" rowspan="2">Bodega</th>
+                      <th scope="col" rowspan="2">Observaciones</th>
+                    </tr>
+                    <tr>
+                      <th scope="col" class="border-left">Fecha</th>
                       <th scope="col">Cantidad</th>
-                      <th scope="col">Descripción</th>
-                      <th scope="col">Serie</th>
-                      <th scope="col">Estado</th>
-                      <th scope="col">Fecha salida</th>
-                      <th scope="col">Cantidad salida</th>
                       <th scope="col">Recibido</th>
-                      <th scope="col">Existencia</th>
-                      <th scope="col">Destino</th>
-                      <th scope="col">Observaciones</th>
-                      <th scope="col">Bodega</th>
-                      <th scope="col"></th>
+
+                      <th scope="col" class="border-left">Fecha</th>
+                      <th scope="col">Cantidad</th>
+                      <th scope="col" class="border-right">Destino</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let mobiliario of mobiliarios">
-                      <td>{{mobiliario.cantidad_inicial}}</td>
-                      <td>{{mobiliario.descripcion}}</td>
-                      <td>{{mobiliario.serie}}</td>
-                      <td>{{mobiliario.estado}}</td>
-                      <td>{{mobiliario.fecha_salida}}</td>
-                      <td>{{mobiliario.cantidad_salida}}</td>
-                      <td>{{mobiliario.recibido}}</td>
-                      <td>{{mobiliario.total_existencia}}</td>
-                      <td>{{mobiliario.destino}}</td>
-                      <td>{{mobiliario.observaciones}}</td>
-                      <td>{{mobiliario.idbodega}}</td>
                       <td>
-                          <div class="btn-group" role="group" aria-label="Basic example">
-                              <button class="btn btn-primary" type="button" class="btn btn-secondary">Editar</button>
-                              <button class="btn btn-primary"  type="button" class="btn btn-secondary">Eliminar</button>
-                            </div>                  
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button class="btn-warning" (click)="editarDatos(mobiliario)">Editar</button>
+                            <button class="btn-danger" (click)="eliminar(mobiliario)">Eliminar</button>
+                        </div>                  
                       </td>
+                      <td>{{mobiliario.serie}}</td>
+                      <td>{{mobiliario.descripcion}}</td>
+                      <td class="border-left">{{mobiliario.fecha_entrada | date:'dd/MM/yyyy'}}</td>
+                      <td>{{mobiliario.cantidad_inicial}}</td>
+                      <td>{{mobiliario.recibido}}</td>
+
+                      <td class="border-left">{{mobiliario.fecha_salida | date:'dd/MM/yyyy'}}</td>
+                      <td>{{mobiliario.cantidad_salida}}</td>
+                      <td class="border-right">{{mobiliario.destino}}</td>
+
+                      <td>{{mobiliario.estado}}</td>
+                      <td>{{mobiliario.total_existencia}}</td>
+
+                      <td>{{mobiliario.idbodega}}</td>
+                      <td>{{mobiliario.observaciones}}</td>
                     </tr>
                   </tbody>
               </table>
             </div>
           </div>
-          </div>
         </div>
-      </div>
+        <div class="card">
+          <div class="card-header">Formulario de mobiliario</div>
+          <div class="card-body">
+            <p>
+              <button  class="btn btn-outline-info" (click)="Entrada = true;Salida = false"
+                [attr.aria-expanded]="!Entrada">Entrada
+              </button>
+              <button  class="btn btn-outline-info" (click)="Entrada = false;Salida = true"
+                [attr.aria-expanded]="!Salida">Salida
+              </button>
+            </p>
+            <div *ngIf="Entrada">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="col-form-label" for="mobiliarios">Descripción</label>
+                          <div class="controls">
+                            <div class="input-group">
+                              <input type="text" class="form-control" [(ngModel)]="descripcion">     
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="col-form-label" for="mobiliarios">Fecha entrada</label>
+                          <div class="controls">
+                            <div class="input-group">
+                              <input type="date" class="form-control" [(ngModel)]="fecha_entrada">     
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="col-form-label" for="mobiliarios">Cantidad entrada</label>
+                          <div class="controls">
+                            <div class="input-group">
+                              <input type="text" class="form-control" [(ngModel)]="cantidad_inicial">     
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="col-form-label" for="mobiliarios">Serie</label>
+                          <div class="controls">
+                            <div class="input-group">
+                              <input type="text" class="form-control" [(ngModel)]="serie">     
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="col-form-label" for="mobiliarios">Estado</label>
+                          <div class="controls">
+                            <div class="input-group">
+                              <select class="form-control" [(ngModel)]="idestado">
+                                <option value="">Ninguno</option>
+                                <option value="1">Bueno</option>
+                                <option value="2">Reparar</option>
+                                <option value="3">Malo</option>
+                              </select>   
+                            </div>
+                          </div>
+                      </div>
+                    </div>  
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="col-form-label" for="mobiliarios">Recibido</label>
+                          <div class="controls">
+                            <div class="input-group">
+                              <input type="text" class="form-control" [(ngModel)]="recibido">     
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="col-form-label" for="mobiliarios">Destino/Actividad</label>
+                          <div class="controls">
+                            <div class="input-group">
+                              <input type="text" class="form-control" [(ngModel)]="destino">     
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="col-form-label" for="mobiliarios">Observaciones</label>
+                          <div class="controls">
+                            <div class="input-group">
+                              <input type="text" class="form-control" [(ngModel)]="observaciones">     
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div> 
+                  <div class="row">
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="col-form-label" for="mobiliarios">Bodega</label>
+                            <div class="controls">
+                              <div class="input-group">
+                                <input type="text" class="form-control" [(ngModel)]="idbodega">     
+                              </div>
+                            </div>
+                        </div>
+                      </div> 
+                  </div>
+            </div>
+            <div *ngIf="Salida">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="col-form-label" for="mobiliarios">Descripción</label>
+                          <div class="controls">
+                            <div class="input-group">
+                              <select [(ngModel)]="descripcion" class="form-control" (change)="seleccionarRegistro(descripcion)">
+                                <option *ngFor="let mobiliario of mobiliarios" [value]="mobiliario.descripcion">
+                                  {{mobiliario.descripcion}}
+                                </option>
+                              </select>
+                              <!-- <input type="text" class="form-control" [(ngModel)]="descripcion">      -->
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="col-form-label" for="mobiliarios">Fecha salida</label>
+                          <div class="controls">
+                            <div class="input-group">
+                              <input type="date" class="form-control" [(ngModel)]="fecha_salida">     
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="col-form-label" for="mobiliarios">Cantidad salida</label>
+                          <div class="controls">
+                            <div class="input-group">
+                              <input type="text" class="form-control" [(ngModel)]="cantidad_salida">     
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="col-form-label" for="mobiliarios">Serie</label>
+                          <div class="controls">
+                            <div class="input-group">
+                              <input type="text" class="form-control" [(ngModel)]="serie">     
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="col-form-label" for="mobiliarios">Estado</label>
+                          <div class="controls">
+                            <div class="input-group">
+                              <select class="form-control" [(ngModel)]="idestado">
+                                <option value="">Ninguno</option>
+                                <option value="1">Bueno</option>
+                                <option value="2">Reparar</option>
+                                <option value="3">Malo</option>
+                              </select>
+                            </div>
+                          </div>
+                      </div>
+                    </div>  
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="col-form-label" for="mobiliarios">Recibido</label>
+                          <div class="controls">
+                            <div class="input-group">
+                              <input type="text" class="form-control" [(ngModel)]="recibido">     
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="col-form-label" for="mobiliarios">Destino/Actividad</label>
+                          <div class="controls">
+                            <div class="input-group">
+                              <input type="text" class="form-control" [(ngModel)]="destino">     
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="col-form-label" for="mobiliarios">Observaciones</label>
+                          <div class="controls">
+                            <div class="input-group">
+                              <input type="text" class="form-control" [(ngModel)]="observaciones">     
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div> 
+                  <div class="row">
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="col-form-label" for="mobiliarios">Bodega</label>
+                            <div class="controls">
+                              <div class="input-group">
+                                <input type="text" class="form-control" [(ngModel)]="idbodega">     
+                              </div>
+                            </div>
+                        </div>
+                      </div> 
+                  </div>
+            </div>
+            <button class="btn btn-primary" (click)="guardarDatos()">
+              Guardar registros
+            </button>
+            <br>
         </div>
-      </div>
+  
+        </div>  
+
     </div>
   </div>
