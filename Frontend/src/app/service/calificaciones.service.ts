@@ -3,6 +3,12 @@ import {  calificaciones} from "../models/calificaciones";
 import { HttpClient } from '@angular/common/http';
 import { config } from '../../config';
 
+import * as FileSaver from 'file-saver';
+import * as XLMS from 'xlsx';
+import { DatePipe } from '@angular/common';
+
+const EXCEL_TYPE= '.xlsx';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -39,6 +45,23 @@ export class CalificacionesService {
 
   Filtrolumnos(grado:string,periodo:string ,seccion:string){
     return this.http.get(`${this.API_URI}alumnos/${grado}/${periodo}/${seccion}`);
+  }
+
+
+  //Agregando opcion para descarga en excel
+  exportToExcel(json:any[],excelName:string):void{
+    const workshhet: XLMS.WorkSheet = XLMS.utils.json_to_sheet(json);
+    const workbook : XLMS.WorkBook= {Sheets:{'data':workshhet},
+    SheetNames:['data']
+    };
+    const excelBuffer: any = XLMS.write(workbook,{bookType:'xlsx',type:'array'});
+    //llammar al metodo guardado en buffer
+    this.saveAsExcel(excelBuffer,excelName);
+  }
+
+  private saveAsExcel(buffer:any,filename:string):void{
+    const data:Blob= new Blob([buffer],{type:EXCEL_TYPE});
+    FileSaver.saveAS(data,filename+'_export_'+ new Date().getTime()+EXCEL_TYPE);
   }
 
 }
