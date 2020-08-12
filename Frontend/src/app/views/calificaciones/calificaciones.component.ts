@@ -120,8 +120,8 @@ export class CalificacionesComponent {
   }
 
   // metodo para exportar
-    ExportData():void{
-      this.serviceCalif.exportToExcel(this.calificaciones,'Descarga') ;
-    }
+    // ExportData():void{
+    //   this.serviceCalif.exportToExcel(this.calificaciones,'Descarga') ;
+    // }
 
 }
