@@ -14,6 +14,11 @@ var connection = mysql.createConnection(options)
 connection.connect((err) =>{
     if(!err){
         console.log("Connected!!")
+        setInterval(function () {
+            connection.query('SELECT 1');
+            console.log("Conección actualizada!!")
+        }, 60 * 1000);
+        
     }
     else{
         console.log("Connection Failed!!")
