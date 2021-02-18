@@ -33,7 +33,8 @@ Router.post('/filter', (req, res) => {
     FROM 	matricula m
         INNER JOIN grado g ON m.grado = g.idgrado
         LEFT JOIN requisitos r ON m.idmatricula = r.id
-    ` + filtro;
+    ` + filtro
+    + ' ORDER BY nombre_alumno ';
     console.log(queryString, params);
 
     connection.query(queryString, params, (err, rows, fields) => {

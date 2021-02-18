@@ -4,6 +4,8 @@ import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { CommonModule } from "@angular/common";
 import axios from 'axios';
 import { config } from '../../../config';
+import arraytotext from '../../helpers/arraytotext';
+import download from '../../helpers/download';
 
 const URL = config.backendURL() + '/matriculas';
 const URL_GRADOS = config.backendURL() + '/grados';
@@ -63,5 +65,18 @@ export class DashboardComponent {
         this.matriculas = data;
       });
 
+  }
+
+  descargar(){
+    var datos = [ ['Nombre', 'Grado'] ]
+
+    this.matriculas.forEach(element => {
+      datos.push([element.nombre_alumno, element.nombre_grado])
+    });;
+    var contenido = arraytotext(datos);
+
+    download({
+      content:contenido, fileName:'Listado de alumnos matriculados.csv'
+    });
   }
 }
