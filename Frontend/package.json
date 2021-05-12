@@ -42,7 +42,7 @@
     "@coreui/icons": "0.3.0",
     "axios": "^0.19.0",
     "bootstrap": "^4.4.1",
-    "chart.js": "^2.9.2",
+    "chart.js": "^2.9.4",
     "core-js": "^2.6.10",
     "file-saver": "^2.0.2",
     "flag-icon-css": "^3.4.5",
